@@ -5,8 +5,13 @@ const scrollerImgRight = document.getElementById('scroller_img_right');
 
 
 scrollerImgLeft.onclick = function(){
-    const temp = scrollerImgCenter.id;
-    scrollerImgCenter.id = scrollerImgRight.id;
-    scrollerImgRight.id = scrollerImgLeft.id;
-    scrollerImgLeft.id = temp;
+    const temp = scrollerImgCenter.src;
+    scrollerImgCenter.src = scrollerImgLeft.src;
+    scrollerImgLeft.src = temp;
+};
+
+scrollerImgRight.onclick = function(){
+    const temp = scrollerImgCenter.src;
+    scrollerImgCenter.src = scrollerImgRight.src;
+    scrollerImgRight.src = temp;
 };
