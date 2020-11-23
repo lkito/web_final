@@ -23,6 +23,13 @@
     justify-content: center;
 }
 
+.nav-arrow{
+    width: 50px;
+    height: 50px;
+    padding: 0px 2px;
+    cursor: pointer; 
+}
+
 /* General_end */
 
 
@@ -67,7 +74,7 @@
 .item--navbar--button:hover{
     border-top: 2px solid white;
     border-bottom: 2px solid white;
-    cursor: pointer
+    cursor: pointer;
 }
 
 /* Navbar_end */
@@ -119,6 +126,7 @@
     align-items: center;
     justify-content: space-between;
     overflow: hidden;
+    padding: 20px 0px;
 }
 
 .item--new-blog{
@@ -149,6 +157,8 @@
     position: absolute;
     bottom: 0px;
     transition: 0.5s;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .item--new-blog:hover .new-blog-title{

@@ -58,3 +58,14 @@ const mouseUpHandler = function() {
 
 // Attach the handler
 ele.addEventListener('mousedown', mouseDownHandler);
+
+const ScrollRight = function(e) {
+    ele.scrollLeft += 200;
+};
+
+const ScrollLeft = function(e) {
+    ele.scrollLeft -= 200;
+};
+
+document.getElementById('right-arrow-blogs').addEventListener('click', ScrollRight);
+document.getElementById('left-arrow-blogs').addEventListener('click', ScrollLeft);
