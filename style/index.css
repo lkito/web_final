@@ -30,6 +30,13 @@
     cursor: pointer; 
 }
 
+.item--border{
+    width: 100%;
+    height: 1px;
+    background-color: #e2e2e2;
+    margin: 6px 0px;
+}
+
 /* General_end */
 
 
@@ -114,19 +121,58 @@
 /* scroller_end */
 
 
+/* scroll-header_start */
+
+.section--scroll-header{
+    background-color: #e8e7e5;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.container--scroll-header{
+    padding-top: 20px;
+}
+
+.scroll-header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #303030;
+    width: 100%;
+    align-items: center;
+    height: 3px;
+    position: relative;
+}
+
+.scroll-header .title{
+    display: flex;
+    width: 256px;
+    height: 48px;
+    border-radius: 11px;
+    background-color: #303030;
+    color: white;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* scroll-header_end */
+
 
 /* new_blogs_start */
 
-.section--new-blogs{
+.section--content-scroll{
     background-color: #e8e7e5;
 }
 
-.new-blogs{
+.content-scroll{
     display: flex;
     align-items: center;
     justify-content: space-between;
     overflow: hidden;
     padding: 20px 0px;
+    cursor: pointer;
 }
 
 .item--new-blog{
@@ -166,3 +212,78 @@
 }
 
 /* new_blogs_end */
+
+
+
+/* new_tweets_start */
+
+.twitter-tweet {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 16px;
+    border-color: #eee #ddd #bbb;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    margin: 10px 5px;
+    padding: 16px;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+    min-width: 400px;
+    min-height: 233px;
+}
+  
+.twitter-tweet p {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20px;
+}
+  
+.twitter-tweet a {
+    color: inherit;
+    font-weight: normal;
+    text-decoration: none;
+    outline: 0 none;
+}
+  
+.twitter-tweet a:hover,
+.twitter-tweet a:focus {
+    text-decoration: underline;
+}
+
+.tweet-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.twitter-tweet .tweet-link{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.tweet-user .user-image{
+    width: 46px;
+    height: 46px;
+    border-radius: 9999px;
+    pointer-events: none;
+}
+
+.tweet-user {
+    display: flex;
+}
+
+.tweet-user-id {
+    padding-left: 10px;
+}
+
+/* new_tweets_end */
