@@ -9,14 +9,12 @@
 
 .section--general{
     width: 100%;
-    background-color: #d9cada;
+    background-color: #0c3865;
 }
 
 .container--general{
     width: 960px;
     margin: auto;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
 }
 
 .flex--center-items{
@@ -31,7 +29,7 @@
 /* Navbar_start */
 
 .container--navbar{
-    border-bottom: 1px solid black;
+    border-bottom: 0px solid black;
 }
 
 .navbar__items{
@@ -45,6 +43,10 @@
     padding-bottom: 15px;
 }
 
+.item--navbar--logo img{
+    width: 100%;
+}
+
 .navbar__items__menu{
     display: flex;
     width: 50%;
@@ -56,15 +58,15 @@
     align-items: center;
     justify-content: center;
     width: 25%;
-    color: black;
+    color: white;
     font-weight: 700;
     font-size: large;
     transition: 0.1s;
 }
 
 .item--navbar--button:hover{
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
     cursor: pointer
 }
 
@@ -106,47 +108,51 @@
 
 
 
-/* gallery_start*/
+/* new_blogs_start */
 
-
-.container--gallery{
-    padding-top: 15px;
+.section--new-blogs{
+    background-color: #e8e7e5;
 }
 
-.gallery__items {
+.new-blogs{
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    overflow: hidden;
+}
+
+.item--new-blog{
+    width: 300px;
+    height: 200px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    min-width: min-content;
+}
+
+.item--new-blog img{
+    height: 100%;
+    pointer-events: none;
+}
+
+.new-blog-title{
+    display: flex;
+    height: 40px;
     width: 100%;
-}
-
-.gallery-subsection {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-}
-
-.gallery-logo {
-    display: flex;
+    background-color: #151515;
+    align-items: center;
     justify-content: center;
-    width: 100%;
-    font-weight: bolder;
-    font-size: x-large;
+    text-align: center;
+    color: white;
+    position: absolute;
+    bottom: 0px;
+    transition: 0.5s;
 }
 
-.gallery-card {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 5px;
-    background-color:#000;
+.item--new-blog:hover .new-blog-title{
+    bottom: -40px;
 }
 
-.gallery-card img{
-    width: 100%;
-}
-
-.gallery-card img:hover {
-    opacity:0.3;
-}
-
-/* gallery_end*/
+/* new_blogs_end */
