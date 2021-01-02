@@ -67,7 +67,7 @@
 .item--navbar--button:hover{
     border-top: 2px solid white;
     border-bottom: 2px solid white;
-    cursor: pointer
+    cursor: pointer;
 }
 
 /* Navbar_end */
@@ -92,15 +92,40 @@
     display: flex;
     flex-direction: column;
     width: 30%;
+    justify-content: space-between;
 }
 
-.gallery-logo {
+.gallery__titles {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.gallery-title {
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 30%;
     font-weight: bolder;
     font-size: x-large;
     color: white;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    padding-top: 5px;
+}
+
+.gallery-title:hover{
+    cursor: pointer;
+    border-color: white;
+}
+
+.gallery-title--clicked {
+    border-color: white;
+    width: 80%;
+}
+
+#gallery-title-decor{
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .gallery-card {
