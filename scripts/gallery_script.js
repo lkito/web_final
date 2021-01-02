@@ -42,7 +42,8 @@ const gallerySectionHandler = (e) => {
         changeClassProperties('gallery-subsection', {
             'width': '30%',
             'flex-direction': 'column',
-            'flex-wrap': 'nowrap'
+            'flex-wrap': 'nowrap',
+            'justify-content': ''
         });
         changeClassProperties('gallery-card', {
             'width': '100%'
@@ -51,7 +52,8 @@ const gallerySectionHandler = (e) => {
         changeClassProperties('gallery-subsection', {
             'width': '100%',
             'flex-direction': 'row',
-            'flex-wrap': 'wrap'
+            'flex-wrap': 'wrap',
+            'justify-content': 'space-around'
         });
         changeClassProperties('gallery-card', {
             'width': '30%'
