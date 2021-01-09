@@ -78,6 +78,7 @@
 .section--gallery{
     min-height: 1000px;
     background-image: linear-gradient(#0c3865,#800ead 800px, #700759 2000px);
+    padding-bottom: 30px;
 }
 
 .container--gallery{
@@ -94,6 +95,7 @@
     display: flex;
     flex-direction: column;
     width: 30%;
+    transition: 0.5s;
 }
 
 .gallery__titles {
@@ -112,6 +114,7 @@
     border-top: 2px solid transparent;
     border-bottom: 2px solid transparent;
     font-family: "Times New Roman", Times, serif;
+    transition: 0.5s;
 }
 
 .gallery-title:hover{

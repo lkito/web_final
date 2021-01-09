@@ -83,6 +83,7 @@
 
 .main-article__items {
     padding-top: 20px;
+    padding-bottom: 30px;
     display: flex;
     justify-content: space-around;
     height: 450px;
@@ -167,10 +168,16 @@
 
 /* articles_start */
 
+.section--articles{
+    background-color: #e8e7e5;
+    padding-bottom: 30px;
+}
+
 .article__items{
     padding-top: 20px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .article-card {
@@ -179,9 +186,11 @@
     width: auto;
     position: relative;
     width: 300px;
-    /* align-self: center; */
     align-items: center;
     justify-content: center;
+    border-radius: 15px;
+    background-color: black;
+    margin-top: 20px;
 }
 
 .article-image{
@@ -194,10 +203,12 @@
 }
 
 .article-info {
-    text-shadow: black 0px 0px 10px;
     width: 90%;
+    height: 80px;
     display: flex;
+    justify-content: space-around;
     flex-direction: column;
+    margin-bottom: 8px;
 }
 
 .article-title{

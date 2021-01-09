@@ -87,6 +87,45 @@
 /* Navbar_end */
 
 
+
+
+/* footer_start */
+
+.section--footer{
+    background-color: black;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.social-links{
+    display: flex;
+}
+
+.social-button{
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+.copyright-text{
+    margin-bottom: 10px;
+}
+
+
+/* footer_end */
+
+
+
+
 /* scroller_start */
 
 .container--scroller{
