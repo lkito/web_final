@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebFinalDB.Models;
+using System.Data.Entity;
 
 namespace WebFinalApp.Controllers
 {
@@ -20,14 +21,14 @@ namespace WebFinalApp.Controllers
         [HttpGet("api/[controller]")]
         public ActionResult<List<BlogResults.Blog>> Get()
         {
-            return db.Blogs.ToList().Select(e => new BlogResults.Blog(e)).ToList();
+            return db.Blogs.Include(b => b.Images).ToList().Select(e => new BlogResults.Blog(e)).ToList();
         }
 
         // GET api/blogs/5
         [HttpGet("api/[controller]/{id}")]
         public ActionResult<BlogResults.Blog> Get(int id)
         {
-            return new BlogResults.Blog(db.Blogs.FirstOrDefault(e => e.Id == id));
+            return new BlogResults.Blog(db.Blogs.Include(b => b.Images).FirstOrDefault(e => e.Id == id));
         }
 
         // GET api/blogs/GetBlogImages/5

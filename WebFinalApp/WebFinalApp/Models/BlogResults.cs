@@ -15,11 +15,13 @@ namespace WebFinalApp.Controllers
                 BlogTitle = blog.BlogTitle;
                 BlogBody = blog.BlogBody;
                 DateCreated = blog.DateCreated;
+                Images = blog.Images.ToList().Select(e => new Image(e)).ToList();
             }
             public int Id { get; set; }
             public string BlogTitle { get; set; }
             public string BlogBody { get; set; }
             public DateTime DateCreated { get; set; }
+            public List<Image> Images { get; set; }
         }
         public class Image
         {
