@@ -107,6 +107,6 @@ const aj = (method, url, callback) => {
     request.send();
 };
 
-aj('GET', 'http://localhost:61850/api/values', (json) => {
+aj('GET', 'http://localhost:52162/api/blogs', (json) => {
     console.log(JSON.parse(json));
 });

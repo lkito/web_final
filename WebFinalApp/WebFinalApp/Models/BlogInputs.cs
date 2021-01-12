@@ -11,6 +11,8 @@ namespace WebFinalApp.Controllers
         {
             public string ImagePath { get; set; }
             public bool IsMainImage { get; set; }
+            public List<string> ImageTags { get; set; }
+            public string ImageType { get; set; }
         }
 
         public class Blog

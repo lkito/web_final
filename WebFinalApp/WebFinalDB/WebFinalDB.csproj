@@ -73,11 +73,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Migrations\tables.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\ImageTag.cs" />
+    <Compile Include="Models\ImageType.cs" />
     <Compile Include="Models\WebFinalContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
