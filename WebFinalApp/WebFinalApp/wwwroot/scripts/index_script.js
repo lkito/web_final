@@ -1,3 +1,5 @@
+import Shared from './shared.js';
+const general = new Shared();
 
 const scrollerImgCenter = document.getElementById('scroller_img_center');
 const scrollerImgLeft = document.getElementById('scroller_img_left');
@@ -87,26 +89,6 @@ document.getElementById('left-arrow-tweets').addEventListener('click', function(
     ScrollLeft(tweet_elem);
 });
 
-const aj = (method, url, callback) => {
-    var request = new XMLHttpRequest();
-    request.open(method, url, true);
-    
-    request.onload = function() {
-      if (this.status >= 200 && this.status < 400) {
-        callback(this.response);
-      } else {
-        // We reached our target server, but it returned an error
-    
-      }
-    };
-    
-    request.onerror = function() {
-        console.log('errored!!');
-    };
-    
-    request.send();
-};
-
 const fillFeaturedBlogs = () => {
     const blogsElem = document.getElementById('new-blogs');
     const getMainImagePath = (images) => {
@@ -120,7 +102,7 @@ const fillFeaturedBlogs = () => {
         })
         return images[0].imagePath;
     }
-    aj('GET', 'http://localhost:52162/api/blogs', (json) => {
+    general.apiCall('GET', 'http://localhost:52162/api/blogs', (json) => {
         const result = JSON.parse(json);
         result.forEach(e => {
             blogsElem.innerHTML += `

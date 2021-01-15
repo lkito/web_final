@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace WebFinalApp
 {
@@ -34,10 +36,19 @@ namespace WebFinalApp
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseDefaultFiles();
+            app.UseMvc();
+
+            app.UseStatusCodePagesWithReExecute("/app.html");
+
+
+            DefaultFilesOptions options = new DefaultFilesOptions();
+            options.DefaultFileNames.Clear();
+            options.DefaultFileNames.Add("app.html");
+
+            app.UseDefaultFiles(options);
             app.UseStaticFiles();
 
-            app.UseMvc();
         }
+
     }
 }
