@@ -59,7 +59,7 @@ const loadContent = (uri) => {
     xhttp.send();
 };
 
-const goTo = (uri, routeName) => {
+function goTo(uri, routeName) {
     window.history.pushState({}, routeName, uri);
 
     loadContent(uri);
