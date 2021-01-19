@@ -6,7 +6,6 @@ const sharedFuncs = new Shared();
 export default class Gallery {
     constructor() {
         this.isLoading = false;
-        window.addEventListener('scroll', this.scrollHandler.bind(this));
     };
 
     gallerySectionHandler (e) {
@@ -124,5 +123,11 @@ export default class Gallery {
         this.isLoading = true;
         this.fillGallery();
         setTimeout(() => { this.isLoading = false; }, 200);
+        this.scrollHandlerProt = this.scrollHandler.bind(this);
+        window.addEventListener('scroll', this.scrollHandlerProt);
+    }
+
+    galleryUnload() {
+        window.removeEventListener('scroll', this.scrollHandlerProt);
     }
 }
