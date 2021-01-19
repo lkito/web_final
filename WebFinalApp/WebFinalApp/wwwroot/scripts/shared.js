@@ -1,9 +1,6 @@
 export default class Shared {
     constructor() {
-        document.getElementById('back-to-top-button').addEventListener('click', () => {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        });
+
     };
 
     apiCall(method, url, callback) {

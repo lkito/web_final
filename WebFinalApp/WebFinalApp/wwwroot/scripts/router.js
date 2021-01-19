@@ -1,4 +1,9 @@
-﻿class LoadFunctions {
+﻿import Gallery from './gallery_script.js';
+
+const gallery = new Gallery();
+
+
+class LoadFunctions {
 
     constructor() { };
 
@@ -43,55 +48,6 @@
 
         fillFeaturedBlogs();
     };
-
-    galleryLoad() {
-        let isLoading = false;
-        const fillGallery = async () => {
-            const cakesElem = document.getElementById('subsection-cakes');
-            const decorElem = document.getElementById('subsection-decor');
-            const cookiesElem = document.getElementById('subsection-cookies');
-            const skip = Math.max(cakesElem.childElementCount, decorElem.childElementCount, cookiesElem.childElementCount);
-            const take = 3;
-            this.apiCall('GET', `http://localhost:52162/api/images/GetGalleryImages/${skip}/${take}`, (json) => {
-                const result = JSON.parse(json);
-                const galleryFill = (source, elem) => {
-                    source.forEach(e => {
-                        elem.innerHTML += `
-                        <div class="gallery-card">
-                            <div class="card-content">
-                                <img class="gallery-image" src="./images/BlogImages/${e.imagePath}" alt="">
-                                <div class="redirections">
-                                    <a class="redirect-image" href="./images/BlogImages/${e.imagePath}" target="_blank">
-                                        <img class="redirect-image" src="./images/redirect_image.png" alt="">
-                                    </a>
-                                    <a class="redirect-image" href="./article/${e.blogId}" target="_blank">
-                                        <img class="redirect-image" src="./images/redirect_blog.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                `;
-                    });
-                };
-                galleryFill(result.cakeImages, cakesElem);
-                galleryFill(result.decorImages, decorElem);
-                galleryFill(result.cookieImages, cookiesElem);
-            });
-        };
-
-        isLoading = true;
-        fillGallery();
-        setTimeout(function () { isLoading = false; }, 200);
-        window.addEventListener('scroll', async () => {
-            if (isLoading) return;
-            const contentElem = document.getElementById('gallery__items');
-            if (window.innerHeight + window.scrollY > (contentElem.offsetTop + contentElem.offsetHeight)) {
-                isLoading = true;
-                await fillGallery();
-                setTimeout(function () { isLoading = false; }, 200);
-            }
-        });
-    };
 };
 
 const loadFuncs = new LoadFunctions();
@@ -126,13 +82,7 @@ const routeMaps = {
     '/gallery': {
         filePath: '/gallery.html',
         callBack: () => {
-            var script = document.createElement('script');
-
-            script.setAttribute('type', 'module');
-            script.setAttribute('src', './scripts/gallery_script.js');
-
-            appElem.appendChild(script);
-            loadFuncs.galleryLoad();
+            gallery.galleryLoad();
         }
     },
     '/blog': {
@@ -158,7 +108,7 @@ const loadContent = (uri) => {
     xhttp.send();
 };
 
-function goTo(uri, routeName) {
+window.goTo = (uri, routeName) => {
     window.history.pushState({}, routeName, uri);
 
     loadContent(uri);
