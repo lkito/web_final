@@ -1,4 +1,61 @@
-﻿
+﻿class LoadFunctions {
+
+    constructor() { };
+
+    apiCall(method, url, callback) {
+        var request = new XMLHttpRequest();
+        request.open(method, url, true);
+
+        request.onload = function () {
+            if (this.status >= 200 && this.status < 400) {
+                callback(this.response);
+            } else {
+                // We reached our target server, but it returned an error
+
+            }
+        };
+
+        request.onerror = function () {
+            console.log('errored!!');
+        };
+
+        request.send();
+    };
+
+    indexLoad() {
+        const fillFeaturedBlogs = () => {
+            const blogsElem = document.getElementById('new-blogs');
+            const getMainImagePath = (images) => {
+                if (!images || !images.length) {
+                    return '';
+                }
+                images.forEach(e => {
+                    if (e.isMainImage) {
+                        return e.imagePath;
+                    }
+                })
+                return images[0].imagePath;
+            }
+            this.apiCall('GET', 'http://localhost:52162/api/blogs', (json) => {
+                const result = JSON.parse(json);
+                result.forEach(e => {
+                    blogsElem.innerHTML += `
+                    <div class="item--new-blog">
+                        <img src="./images/BlogImages/${getMainImagePath(e.images)}" alt="">
+                        <div class="new-blog-title">
+                            ${e.blogTitle}
+                        </div>
+                    </div>
+                `;
+                });
+            });
+        };
+
+        fillFeaturedBlogs();
+    };
+};
+
+const loadFuncs = new LoadFunctions();
 const appElem = document.getElementById('app'); 
 
 // uri : filePath
@@ -12,6 +69,7 @@ const routeMaps = {
             script.setAttribute('src', './scripts/index_script.js');
 
             appElem.appendChild(script);
+            loadFuncs.indexLoad();
         }
     },
     '/index': {
@@ -23,6 +81,7 @@ const routeMaps = {
             script.setAttribute('src', './scripts/index_script.js');
 
             appElem.appendChild(script);
+            loadFuncs.indexLoad();
         }
     },
     '/gallery': {

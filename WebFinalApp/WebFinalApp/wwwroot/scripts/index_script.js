@@ -1,6 +1,3 @@
-import Shared from './shared.js';
-const general = new Shared();
-
 const scrollerImgCenter = document.getElementById('scroller_img_center');
 const scrollerImgLeft = document.getElementById('scroller_img_left');
 const scrollerImgRight = document.getElementById('scroller_img_right');
@@ -88,33 +85,3 @@ document.getElementById('right-arrow-tweets').addEventListener('click', function
 document.getElementById('left-arrow-tweets').addEventListener('click', function(){
     ScrollLeft(tweet_elem);
 });
-
-const fillFeaturedBlogs = () => {
-    const blogsElem = document.getElementById('new-blogs');
-    const getMainImagePath = (images) => {
-        if (!images || !images.length) {
-            return '';
-        }
-        images.forEach(e => {
-            if (e.isMainImage) {
-                return e.imagePath;
-            }
-        })
-        return images[0].imagePath;
-    }
-    general.apiCall('GET', 'http://localhost:52162/api/blogs', (json) => {
-        const result = JSON.parse(json);
-        result.forEach(e => {
-            blogsElem.innerHTML += `
-                <div class="item--new-blog">
-                    <img src="./images/BlogImages/${getMainImagePath(e.images)}" alt="">
-                    <div class="new-blog-title">
-                        ${e.blogTitle}
-                    </div>
-                </div>
-            `;
-        });
-    });
-}
-
-fillFeaturedBlogs();

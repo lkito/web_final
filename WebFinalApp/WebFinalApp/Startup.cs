@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Internal;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -37,6 +38,10 @@ namespace WebFinalApp
                 app.UseDeveloperExceptionPage();
             }
             app.UseMvc();
+            //var rewriteOptions = new RewriteOptions()
+            //    .AddRedirect("(.*).html", "$1");
+
+            //app.UseRewriter(rewriteOptions);
 
             app.UseStatusCodePagesWithReExecute("/app.html");
 
@@ -47,7 +52,6 @@ namespace WebFinalApp
 
             app.UseDefaultFiles(options);
             app.UseStaticFiles();
-
         }
 
     }
