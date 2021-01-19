@@ -29,13 +29,14 @@
                 const result = JSON.parse(json);
                 result.forEach(e => {
                     blogsElem.innerHTML += `
-                    <div class="item--new-blog">
-                        <img src="./images/BlogImages/${e.image.imagePath}" alt="">
-                        <div class="new-blog-title">
-                            ${e.blogTitle}
+                        <div class="item--new-blog" target="_blank">
+                            <a class="targ_link" href="./article/${e.id}" target="_blank"></a>
+                            <img src="./images/BlogImages/${e.image.imagePath}" alt="">
+                            <div class="new-blog-title">
+                                ${e.blogTitle}
+                            </div>
                         </div>
-                    </div>
-                `;
+                    `;
                 });
             });
         };

@@ -31,7 +31,7 @@ namespace WebFinalApp.Controllers
         [HttpGet("api/images/GetGalleryImages/{skip}/{take}")]
         public ActionResult<ImageResults.GalleryImageLists> GetGalleryImages(int skip = 0, int take = 10)
         {
-            var dbImages = db.Images.Include(c => c.ImageType).Include(d => d.ImageTags)
+            var dbImages = db.Images.Include(c => c.ImageType).Include(d => d.ImageTags).Include(e => e.Blog)
                 .OrderByDescending(i => i.DateCreated);
             return new ImageResults.GalleryImageLists
             {

@@ -135,7 +135,7 @@
     text-overflow: ellipsis;
 }
 
-.item--new-blog:hover .new-blog-title{
+.item--new-blog:hover .new-blog-title {
     bottom: -40px;
 }
 

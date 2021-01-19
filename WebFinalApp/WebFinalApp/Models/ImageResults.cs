@@ -29,7 +29,12 @@ namespace WebFinalApp.Models
                 BlogId = img.BlogId;
                 ImageType = img.ImageType.Type;
                 ImageTags = img.ImageTags.Select(e => e.TagName).ToList();
+                if(img.Blog != null)
+                {
+                    BlogTitle = img.Blog.BlogTitle;
+                }
             }
+            public string BlogTitle { get; set; }
             public string ImagePath { get; set; }
             public DateTime DateCreated { get; set; }
             public int? BlogId { get; set; }

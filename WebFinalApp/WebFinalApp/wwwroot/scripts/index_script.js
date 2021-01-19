@@ -17,6 +17,7 @@ scrollerImgRight.onclick = function(){
 
 const addScroller = function(elem) {
     let pos = { top: 0, left: 0, x: 0, y: 0 };
+    let startPos = { x: 0, y: 0 };
 
     const mouseDownHandler = function(e) {
         elem.style.cursor = 'grabbing';
@@ -29,7 +30,11 @@ const addScroller = function(elem) {
             x: e.clientX,
             y: e.clientY,
         };
-    
+
+        startPos = {
+            x: e.clientX,
+            y: e.clientY,
+        };
         elem.addEventListener('mousemove', mouseMoveHandler);
         elem.addEventListener('mouseup', mouseUpHandler);
     };
@@ -44,12 +49,15 @@ const addScroller = function(elem) {
         elem.scrollLeft = pos.left - dx;
     };
 
-    const mouseUpHandler = function() {
+    const mouseUpHandler = function(e) {
         elem.style.cursor = 'pointer';
         elem.style.removeProperty('user-select');
     
         elem.removeEventListener('mousemove', mouseMoveHandler);
         elem.removeEventListener('mouseup', mouseUpHandler);
+        if (startPos.x == e.x && startPos.y == e.y) {
+            e.target.querySelector('.targ_link').dispatchEvent(new MouseEvent('click'));
+        }
     };
 
     // Attach the handler
