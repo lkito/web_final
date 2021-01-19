@@ -59,6 +59,7 @@
 }
 
 .gallery-card {
+    width: 100%;
     margin-top: 15px;
     background-color: black;
     align-self: center;

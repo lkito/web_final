@@ -1,21 +1,3 @@
-// const gallerySections = {
-//     'gallery-title-cakes': document.getElementById('subsection-cakes'),
-//     'gallery-title-decor': document.getElementById('subsection-decor'),
-//     'gallery-title-cookies': document.getElementById('subsection-cookies')
-// };
-
-const changeClassProperties = (cssClass, propMap) => {
-    Array.prototype.forEach.call(document.getElementsByClassName(cssClass), (el) => {
-        for (const [key, value] of Object.entries(propMap)) {
-            el.style[key] = value;
-        }
-    });
-    // document.getElementsByClassName(cssClass).forEach(e => {
-    //     for (const [key, value] of Object.entries(propMap)) {
-    //         e.style[key] = value;
-    //     }
-    // });
-}
 
 const gallerySections = [
     {
@@ -39,25 +21,20 @@ const gallerySectionHandler = (e) => {
         gallerySections.forEach(s => {
             s.section.style.display = 'flex';
         });
-        changeClassProperties('gallery-subsection', {
-            'width': '30%',
-            'flex-direction': 'column',
-            'flex-wrap': 'nowrap',
-            'justify-content': ''
-        });
-        changeClassProperties('gallery-card', {
-            'width': '100%'
-        });
+        document.getElementById('dynamic_style').innerHTML = ``;
     } else {
-        changeClassProperties('gallery-subsection', {
-            'width': '100%',
-            'flex-direction': 'row',
-            'flex-wrap': 'wrap',
-            'justify-content': 'space-around'
-        });
-        changeClassProperties('gallery-card', {
-            'width': '30%'
-        });
+        document.getElementById('dynamic_style').innerHTML = `
+            div .gallery-subsection {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+
+            div .gallery-card {
+                width: 30%;
+            }
+        `;
         gallerySections.forEach(s => {
             if(s.title.id != e.srcElement.id){
                 s.section.style.display = 'none';
@@ -75,11 +52,3 @@ const gallerySectionHandler = (e) => {
 gallerySections.forEach(e => {
     e.title.addEventListener('click', gallerySectionHandler);
 });
-
-// for (const [key, value] of Object.entries(gallerySections)) {
-//     document.getElementById(key).addEventListener('click', gallerySectionHandler);
-// }
-
-// sectionCakes.addEventListener('click', gallerySectionHandler);
-// sectionDecor.addEventListener('click', gallerySectionHandler);
-// sectionCookies.addEventListener('click', gallerySectionHandler);

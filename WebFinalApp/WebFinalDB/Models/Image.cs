@@ -26,6 +26,8 @@ namespace WebFinalDB.Models
 
         public int ImageTypeId { get; set; }
 
+        public DateTime DateCreated { get; set; }
+
         public virtual Blog Blog { get; set; }
 
         public virtual ImageType ImageType { get; set; }

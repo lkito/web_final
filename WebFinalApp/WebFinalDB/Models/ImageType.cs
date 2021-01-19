@@ -16,16 +16,11 @@ namespace WebFinalDB.Models
 
         public int Id { get; set; }
 
-        [Column("ImageType")]
         [Required]
         [StringLength(100)]
-        public string ImageType1 { get; set; }
+        public string Type { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }
-
-        public virtual ImageType ImageTypes1 { get; set; }
-
-        public virtual ImageType ImageType2 { get; set; }
     }
 }

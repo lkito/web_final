@@ -15,6 +15,7 @@ namespace WebFinalApp.Controllers
         public BlogsController()
         {
             db = new WebFinalContext();
+            db.Configuration.LazyLoadingEnabled = true;
         }
 
         // GET api/blogs
@@ -24,18 +25,18 @@ namespace WebFinalApp.Controllers
             return db.Blogs.Include(b => b.Images).ToList().Select(e => new BlogResults.Blog(e)).ToList();
         }
 
+        // GET blog previews
+        [HttpGet("api/blogs/GetBlogPreviews")]
+        public ActionResult<List<BlogResults.BlogPreview>> GetBlogPreviews()
+        {
+            return db.Blogs.Include(b => b.Images).ToList().Select(e => new BlogResults.BlogPreview(e)).ToList();
+        }
+
         // GET api/blogs/5
         [HttpGet("api/[controller]/{id}")]
         public ActionResult<BlogResults.Blog> Get(int id)
         {
             return new BlogResults.Blog(db.Blogs.Include(b => b.Images).FirstOrDefault(e => e.Id == id));
-        }
-
-        // GET api/blogs/GetBlogImages/5
-        [HttpGet("api/blogs/GetBlogImages/{blogId}")]
-        public ActionResult<List<BlogResults.Image>> GetBlogImages(int blogId)
-        {
-            return db.Images.Where(i => i.BlogId == blogId).ToList().Select(e => new BlogResults.Image(e)).ToList();
         }
 
         // POST api/blogs

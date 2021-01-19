@@ -28,26 +28,15 @@ namespace WebFinalDB.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Image>()
-                .HasMany(e => e.ImageTags)
-                .WithRequired(e => e.Image)
-                .WillCascadeOnDelete(false);
+                .HasMany(e => e.ImageTags);
 
             modelBuilder.Entity<ImageTag>()
                 .Property(e => e.TagName)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ImageType>()
-                .Property(e => e.ImageType1)
+                .Property(e => e.Type)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<ImageType>()
-                .HasMany(e => e.Images)
-                .WithRequired(e => e.ImageType)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<ImageType>()
-                .HasOptional(e => e.ImageTypes1)
-                .WithRequired(e => e.ImageType2);
         }
     }
 }
