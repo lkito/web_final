@@ -1,8 +1,10 @@
 ﻿import Gallery from './gallery_script.js';
 import Index from './index_script.js';
+import Blogs from './blogs_script.js';
 
 const gallery = new Gallery();
 const index = new Index();
+const blogs = new Blogs();
 
 const appElem = document.getElementById('app'); 
 
@@ -31,10 +33,14 @@ const routeMaps = {
             gallery.galleryUnload();
         }
     },
-    '/blog': {
-        filePath: '/blog.html',
-        callBack: () => { },
-        unload: () => { }
+    '/blogs': {
+        filePath: '/blogs.html',
+        callBack: () => {
+            blogs.blogsLoad();
+        },
+        unload: () => {
+            blogs.blogsUnload();
+        }
     },
     '/article': {
         filePath: '/article.html',

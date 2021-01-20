@@ -68,21 +68,24 @@ export default class Gallery {
             const result = JSON.parse(json);
             const galleryFill = (source, elem) => {
                 source.forEach(e => {
-                    elem.innerHTML += `
-                        <div class="gallery-card">
+                    let newElem = `<div class="gallery-card">
                             <div class="card-content">
                                 <img class="gallery-image" src="./images/BlogImages/${e.imagePath}" alt="">
                                 <div class="redirections">
                                     <a class="redirect-image" href="./images/BlogImages/${e.imagePath}" target="_blank">
                                         <img class="redirect-image" src="./images/redirect_image.png" alt="">
-                                    </a>
+                                    </a>`;
+                    if (e.blogId != null) {
+                        newElem += `
                                     <a class="redirect-image" href="./article/${e.blogId}" target="_blank">
                                         <img class="redirect-image" src="./images/redirect_blog.png" alt="">
-                                    </a>
+                                    </a>`;
+                    }
+                    newElem += `
                                 </div>
                             </div>
-                        </div>
-                    `;
+                        </div>`;
+                    elem.innerHTML += newElem;
                 });
             };
             galleryFill(result.cakeImages, cakesElem);

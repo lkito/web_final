@@ -20,6 +20,7 @@
     align-self: center;
     position: relative;
     justify-content: center;
+    padding-right: 30px;
 }
 
 .main-article-secondaries{
@@ -48,7 +49,7 @@
 
 .main-article-info {
     text-shadow: black 0px 0px 10px;
-    width: 90%;
+    width: 80%;
     position: absolute;
     display: flex;
     flex-direction: column;

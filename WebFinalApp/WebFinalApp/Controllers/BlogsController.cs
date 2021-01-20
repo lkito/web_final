@@ -26,10 +26,11 @@ namespace WebFinalApp.Controllers
         }
 
         // GET blog previews
-        [HttpGet("api/blogs/GetBlogPreviews")]
-        public ActionResult<List<BlogResults.BlogPreview>> GetBlogPreviews()
+        [HttpGet("api/blogs/GetBlogPreviews/{skip}/{take}")]
+        public ActionResult<List<BlogResults.BlogPreview>> GetBlogPreviews(int skip, int take)
         {
-            return db.Blogs.Include(b => b.Images).ToList().Select(e => new BlogResults.BlogPreview(e)).ToList();
+            return db.Blogs.Include(b => b.Images).OrderByDescending(c => c.DateCreated)
+                .Skip(skip).Take(take).ToList().Select(e => new BlogResults.BlogPreview(e)).ToList();
         }
 
         // GET api/blogs/5
