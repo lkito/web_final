@@ -26,8 +26,8 @@ namespace WebFinalApp.Controllers
         }
 
         // GET blog previews
-        [HttpGet("api/blogs/GetBlogPreviews/{skip}/{take}")]
-        public ActionResult<List<BlogResults.BlogPreview>> GetBlogPreviews(int skip, int take)
+        [HttpGet("api/blogs/GetBlogPreviews")]
+        public ActionResult<List<BlogResults.BlogPreview>> GetBlogPreviews([FromQuery(Name = "skip")] int skip, [FromQuery(Name = "take")] int take)
         {
             return db.Blogs.Include(b => b.Images).OrderByDescending(c => c.DateCreated)
                 .Skip(skip).Take(take).ToList().Select(e => new BlogResults.BlogPreview(e)).ToList();

@@ -74,10 +74,19 @@ window.goTo = (uri, routeName) => {
     loadContent(uri);
 };
 
-window.onload = loadContent(window.location.pathname);
-
 function popStateHandler() {
+    if (unloadFunc !== undefined) {
+        unloadFunc();
+    }
     loadContent(window.location.pathname);
 }
 
+window.onload = loadContent(window.location.pathname);
 window.addEventListener("popstate", popStateHandler);
+
+
+
+document.getElementById('back-to-top-button').addEventListener('click', () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+});

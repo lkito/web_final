@@ -12,7 +12,7 @@ export default class Blogs {
         const blogsElem = document.getElementById('article__items');
         const skip = blogsElem.childElementCount;
         const take = 3;
-        sharedFuncs.apiCall('GET', `http://localhost:52162/api/blogs/GetBlogPreviews/${skip}/${take}`, (json) => {
+        sharedFuncs.apiCall('GET', `http://localhost:52162/api/blogs/GetBlogPreviews/?skip=${skip}&take=${take}`, (json) => {
             const result = JSON.parse(json);
             result.forEach(e => {
                 const curDate = new Date(e.dateCreated);
@@ -37,7 +37,7 @@ export default class Blogs {
     fillFeaturedBlogs() {
         const blogsElem = document.getElementById('main-article__items');
         const take = 3;
-        sharedFuncs.apiCall('GET', `http://localhost:52162/api/blogs/GetBlogPreviews/3/${take}`, (json) => {
+        sharedFuncs.apiCall('GET', `http://localhost:52162/api/blogs/GetBlogPreviews/?skip=3&take=${take}`, (json) => {
             const result = JSON.parse(json);
             const curDate1 = new Date(result[0].dateCreated);
             blogsElem.innerHTML += `
@@ -75,13 +75,13 @@ export default class Blogs {
             }
             addSecondary(result[1]);
             addSecondary(result[2]);
-            console.log(secondaryElems.innerHTML);
         });
     };
 
     async scrollHandler() {
         if (this.isLoading) return;
         const contentElem = document.getElementById('article__items');
+        console.log(contentElem);
         if (window.innerHeight + window.scrollY > (contentElem.offsetTop + contentElem.offsetHeight)) {
             this.isLoading = true;
             await this.fillBlogs();
