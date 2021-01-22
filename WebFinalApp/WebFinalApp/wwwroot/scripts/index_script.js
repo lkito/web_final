@@ -56,11 +56,11 @@ export default class Index {
         elem.addEventListener('mousedown', mouseDownHandler);
     }
 
-    ScrollRight (elem) {
+    scrollRight (elem) {
         elem.scrollLeft += 200;
     };
 
-    ScrollLeft (elem) {
+    scrollLeft (elem) {
         elem.scrollLeft -= 200;
     };
 
@@ -88,19 +88,19 @@ export default class Index {
         this.addScroller(blog_elem);
         this.addScroller(tweet_elem);
 
-        document.getElementById('right-arrow-blogs').addEventListener('click', function () {
-            this.ScrollRight(blog_elem);
+        document.getElementById('right-arrow-blogs').addEventListener('click', () => {
+            this.scrollRight(blog_elem);
         });
-        document.getElementById('left-arrow-blogs').addEventListener('click', function () {
-            this.ScrollLeft(blog_elem);
+        document.getElementById('left-arrow-blogs').addEventListener('click', () => {
+            this.scrollLeft(blog_elem);
         });
 
 
-        document.getElementById('right-arrow-tweets').addEventListener('click', function () {
-            this.ScrollRight(tweet_elem);
+        document.getElementById('right-arrow-tweets').addEventListener('click', () => {
+            this.scrollRight(tweet_elem);
         });
-        document.getElementById('left-arrow-tweets').addEventListener('click', function () {
-            this.ScrollLeft(tweet_elem);
+        document.getElementById('left-arrow-tweets').addEventListener('click', () => {
+            this.scrollLeft(tweet_elem);
         });
 
         const fillFeaturedBlogs = () => {

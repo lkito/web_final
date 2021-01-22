@@ -75,3 +75,9 @@ window.goTo = (uri, routeName) => {
 };
 
 window.onload = loadContent(window.location.pathname);
+
+function popStateHandler() {
+    loadContent(window.location.pathname);
+}
+
+window.addEventListener("popstate", popStateHandler);
