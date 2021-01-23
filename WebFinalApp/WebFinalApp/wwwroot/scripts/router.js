@@ -8,6 +8,7 @@ const blogs = new Blogs();
 
 const appElem = document.getElementById('app'); 
 
+// Regex matching code stolen from https://dev.to/dcodeyt/building-a-single-page-app-without-frameworks-hl9
 const pathToRegex = (path) => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 const getParams = match => {
     if (match.result === []) return [];
@@ -97,6 +98,7 @@ const loadContent = (uri) => {
 };
 
 window.goTo = (uri, routeName) => {
+    if (uri === window.location.pathname) return;
     if (unloadFunc !== undefined) {
         unloadFunc();
     }

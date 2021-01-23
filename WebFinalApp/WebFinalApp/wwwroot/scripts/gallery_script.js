@@ -58,13 +58,20 @@ export default class Gallery {
         }
     }
 
-    async fillGallery() {
+    async fillGallery(filtersUpdated = false) {
         const cakesElem = document.getElementById('subsection-cakes');
         const decorElem = document.getElementById('subsection-decor');
         const cookiesElem = document.getElementById('subsection-cookies');
+        if (filtersUpdated) {
+            cakesElem.innerHTML = '';
+            decorElem.innerHTML = '';
+            cookiesElem.innerHTML = '';
+        }
         const skip = Math.max(cakesElem.childElementCount, decorElem.childElementCount, cookiesElem.childElementCount);
         const take = 3;
-        sharedFuncs.apiCall('GET', `http://localhost:52162/api/images/GetGalleryImages/${skip}/${take}`, (json) => {
+        let queryString = `http://localhost:52162/api/images/GetGalleryImages?skip=${skip}&take=${take}`;
+        this.filterTags.forEach(e => queryString += `&filters=${e}`);
+        sharedFuncs.apiCall('GET', queryString, (json) => {
             const result = JSON.parse(json);
             const galleryFill = (source, elem) => {
                 source.forEach(e => {
@@ -104,7 +111,34 @@ export default class Gallery {
         }
     }
 
+    addTags(e) {
+        if (e.key !== undefined && e.key !== 'Enter') return;
+        const tagList = document.getElementById('filter_tags');
+        const inputElem = document.getElementById('tag_input_text');
+        const inputVal = inputElem.value;
+        inputElem.value = '';
+        const tags = inputVal.split(/(\s+)/);
+
+        tags.forEach(t => {
+            if (t === '' || /^\s+$/.test(t) || this.filterTags.includes(t)) return;
+            this.filterTags.push(t);
+            const tagElem = document.createElement('div');
+            tagElem.className = 'filter_tag';
+            tagElem.innerHTML = t;
+            tagList.appendChild(tagElem);
+            tagElem.addEventListener('click', (e) => {
+                this.filterTags = this.filterTags.filter(function (item) {
+                    return item !== e.target.textContent;
+                })
+                e.target.remove();
+                this.fillGallery(true);
+            });
+        });
+        this.fillGallery(true);
+    }
+
     galleryLoad() {
+        this.filterTags = [];
         const gallerySections = [
             {
                 'title': document.getElementById('gallery-title-cakes'),
@@ -128,9 +162,14 @@ export default class Gallery {
         setTimeout(() => { this.isLoading = false; }, 200);
         this.scrollHandlerProt = this.scrollHandler.bind(this);
         window.addEventListener('scroll', this.scrollHandlerProt);
+
+
+        document.getElementById('tag_input_button').addEventListener('click', this.addTags.bind(this));
+        document.getElementById('tag_input_text').addEventListener('keydown', this.addTags.bind(this));
     }
 
     galleryUnload() {
+        this.filterTags = [];
         window.removeEventListener('scroll', this.scrollHandlerProt);
     }
 }

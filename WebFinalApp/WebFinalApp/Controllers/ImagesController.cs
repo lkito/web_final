@@ -28,11 +28,17 @@ namespace WebFinalApp.Controllers
         }
 
         // GET api/images/GetBlogImages/5/5
-        [HttpGet("api/images/GetGalleryImages/{skip}/{take}")]
-        public ActionResult<ImageResults.GalleryImageLists> GetGalleryImages(int skip = 0, int take = 10)
+        [HttpGet("api/images/GetGalleryImages")]
+        public ActionResult<ImageResults.GalleryImageLists> GetGalleryImages([FromQuery(Name = "filters")] List<string> filters, [FromQuery(Name = "skip")] int skip = 0, [FromQuery(Name = "take")] int take = 10)
         {
-            var dbImages = db.Images.Include(c => c.ImageType).Include(d => d.ImageTags).Include(e => e.Blog)
-                .OrderByDescending(i => i.DateCreated);
+            var dbImages = db.Images.Include(c => c.ImageType).Include(d => d.ImageTags).Include(e => e.Blog);
+            filters = filters.Select(e => e.Trim().ToLower()).ToList();
+            foreach(var tag in filters)
+            {
+                dbImages = dbImages.Where(e => e.ImageTags.Any(t => t.TagName.Contains(tag)));
+            }
+            dbImages = dbImages.OrderByDescending(i => i.DateCreated);
+            
             return new ImageResults.GalleryImageLists
             {
                 CakeImages = dbImages.Where(d => d.ImageType.Type == Constants.ImageType.Cake).Skip(skip).Take(take).ToList().Select(e => new ImageResults.GalleryImage(e)).ToList(),
