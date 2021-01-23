@@ -65,11 +65,23 @@ const routeMaps = {
         },
         unload: () => { }
     },
+    '/about': {
+        filePath: '/about.html',
+        callBack: (params) => {
+        },
+        unload: () => { }
+    },
 };
 
 let unloadFunc;
 
 const loadContent = (uri) => {
+    const uriSections = uri.split('#', 2);
+    uri = uriSections[0];
+    let hash = '';
+    if (uriSections.length === 2) {
+        hash = uriSections[1];
+    }
     let match;
     for (const [route] of Object.entries(routeMaps)) {
         const curMatch = uri.match(pathToRegex(route));
@@ -94,6 +106,11 @@ const loadContent = (uri) => {
         if (this.readyState === this.DONE && this.status < 400) {
             appElem.innerHTML = this.responseText;
             callBack(getParams(match));
+            if (hash) {
+                setTimeout(() => {
+                    document.getElementById(hash).scrollIntoView(true);
+                }, 10);
+            }
         };
     };
     xhttp.open('GET', routeMaps[match.route].filePath, true);
@@ -102,7 +119,7 @@ const loadContent = (uri) => {
 };
 
 window.goTo = (uri, routeName) => {
-    if (uri === window.location.pathname) return;
+    if (uri.split('#')[0] === window.location.pathname) return;
     if (unloadFunc !== undefined) {
         unloadFunc();
     }
@@ -118,7 +135,7 @@ function popStateHandler() {
     loadContent(window.location.pathname);
 }
 
-window.onload = loadContent(window.location.pathname);
+window.onload = loadContent(window.location.pathname + window.location.hash);
 window.addEventListener("popstate", popStateHandler);
 
 

@@ -9,7 +9,6 @@ export default class Article {
     articleLoad(id) {
         sharedFuncs.apiCall('GET', `http://localhost:52162/api/blogs/${id}`, (json) => {
             const result = JSON.parse(json);
-            console.log(result);
             document.getElementById('article_title').innerHTML = result.blogTitle;
 
             const curDate = new Date(result.dateCreated);

@@ -81,7 +81,6 @@ export default class Blogs {
     async scrollHandler() {
         if (this.isLoading) return;
         const contentElem = document.getElementById('article__items');
-        console.log(contentElem);
         if (window.innerHeight + window.scrollY > (contentElem.offsetTop + contentElem.offsetHeight)) {
             this.isLoading = true;
             await this.fillBlogs();

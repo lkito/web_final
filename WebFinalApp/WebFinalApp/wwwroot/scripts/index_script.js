@@ -68,18 +68,33 @@ export default class Index {
         const scrollerImgCenter = document.getElementById('scroller_img_center');
         const scrollerImgLeft = document.getElementById('scroller_img_left');
         const scrollerImgRight = document.getElementById('scroller_img_right');
+        const masterClassButton = document.getElementById('find_out_more');
 
 
         scrollerImgLeft.onclick = function () {
-            const temp = scrollerImgCenter.src;
+            const temp = [scrollerImgCenter.src, scrollerImgCenter.alt];
             scrollerImgCenter.src = scrollerImgLeft.src;
-            scrollerImgLeft.src = temp;
+            scrollerImgCenter.alt = scrollerImgLeft.alt;
+            scrollerImgLeft.src = temp[0];
+            scrollerImgLeft.alt = temp[1];
+            if (scrollerImgCenter.alt === 'masterclass') {
+                masterClassButton.style.display = 'block';
+            } else {
+                masterClassButton.style.display = 'none';
+            }
         };
 
         scrollerImgRight.onclick = function () {
-            const temp = scrollerImgCenter.src;
+            const temp = [scrollerImgCenter.src, scrollerImgCenter.alt];
             scrollerImgCenter.src = scrollerImgRight.src;
-            scrollerImgRight.src = temp;
+            scrollerImgCenter.alt = scrollerImgRight.alt;
+            scrollerImgRight.src = temp[0];
+            scrollerImgRight.alt = temp[1];
+            if (scrollerImgCenter.alt === 'masterclass') {
+                masterClassButton.style.display = 'block';
+            } else {
+                masterClassButton.style.display = 'none';
+            }
         };
 
 
