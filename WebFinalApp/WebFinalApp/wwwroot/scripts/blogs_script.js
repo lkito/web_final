@@ -18,13 +18,13 @@ export default class Blogs {
                 const curDate = new Date(e.dateCreated);
                 blogsElem.innerHTML += `
                     <div class="article-card">
-                        <img class="article-image" src="./images/BlogImages/${e.image.imagePath}" alt="">
+                        <img class="article-image" src="/images/BlogImages/${e.image.imagePath}" alt="">
                         <div class="article-info">
                             <div class="article-date">
-                                <img class="date-logo" src="images/clock.png" alt="">
+                                <img class="date-logo" src="/images/clock.png" alt="">
                                 <p>${curDate.toLocaleTimeString() + ' · ' + curDate.toLocaleDateString()}</p>
                             </div>
-                            <a class="article-title" href="./article/${e.id}" target="_blank">
+                            <a class="article-title" href="/article/${e.id}" target="_blank">
                                 ${e.blogTitle}
                             </a>
                         </div>
@@ -42,13 +42,13 @@ export default class Blogs {
             const curDate1 = new Date(result[0].dateCreated);
             blogsElem.innerHTML += `
                 <div class="main-article-card">
-                    <img class="main-article-image" src="./images/BlogImages/${result[0].image.imagePath}" alt="">
+                    <img class="main-article-image" src="/images/BlogImages/${result[0].image.imagePath}" alt="">
                     <div class="main-article-info">
-                        <a class="main-article-title" href="./article/${result[0].id}" target="_blank">
+                        <a class="main-article-title" href="/article/${result[0].id}" target="_blank">
                                 ${result[0].blogTitle}
                         </a>
                         <div class="main-article-date">
-                            <img class="date-logo" src="images/clock.png" alt="">
+                            <img class="date-logo" src="/images/clock.png" alt="">
                             <p>${curDate1.toLocaleTimeString() + ' · ' + curDate1.toLocaleDateString()}</p>
                         </div>
                     </div>
@@ -60,13 +60,13 @@ export default class Blogs {
                 const curDate1 = new Date(elem.dateCreated);
                 secondaryElems.innerHTML += `
                     <div class="main-article-secondary-card">
-                        <img class="main-article-image" src="./images/BlogImages/${elem.image.imagePath}" alt="">
+                        <img class="main-article-image" src="/images/BlogImages/${elem.image.imagePath}" alt="">
                         <div class="main-article-info">
-                            <a class="main-article-title" href="./article/${elem.id}" target="_blank">
+                            <a class="main-article-title" href="/article/${elem.id}" target="_blank">
                                 ${elem.blogTitle}
                             </a>
                             <div class="main-article-date">
-                                <img class="date-logo" src="images/clock.png" alt="">
+                                <img class="date-logo" src="/images/clock.png" alt="">
                                 <p>${curDate1.toLocaleTimeString() + ' · ' + curDate1.toLocaleDateString()}</p>
                             </div>
                         </div>

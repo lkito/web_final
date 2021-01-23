@@ -1,4 +1,4 @@
-import Shared from './shared.js';
+import Shared from '/scripts/shared.js';
 
 const sharedFuncs = new Shared();
 
@@ -110,8 +110,8 @@ export default class Index {
                 result.forEach(e => {
                     blogsElem.innerHTML += `
                         <div class="item--new-blog" target="_blank">
-                            <a class="targ_link" href="./article/${e.id}" target="_blank"></a>
-                            <img src="./images/BlogImages/${e.image.imagePath}" alt="">
+                            <a class="targ_link" href="/article/${e.id}" target="_blank"></a>
+                            <img src="/images/BlogImages/${e.image.imagePath}" alt="">
                             <div class="new-blog-title">
                                 ${e.blogTitle}
                             </div>

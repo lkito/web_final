@@ -1,10 +1,12 @@
-﻿import Gallery from './gallery_script.js';
-import Index from './index_script.js';
-import Blogs from './blogs_script.js';
+﻿import Gallery from '/scripts/gallery_script.js';
+import Index from '/scripts/index_script.js';
+import Blogs from '/scripts/blogs_script.js';
+import Article from '/scripts/article_script.js';
 
 const gallery = new Gallery();
 const index = new Index();
 const blogs = new Blogs();
+const article = new Article();
 
 const appElem = document.getElementById('app'); 
 
@@ -58,7 +60,9 @@ const routeMaps = {
     },
     '/article/:id': {
         filePath: '/article.html',
-        callBack: (params) => { console.log(params); },
+        callBack: (params) => {
+            article.articleLoad(params.id);
+        },
         unload: () => { }
     },
 };

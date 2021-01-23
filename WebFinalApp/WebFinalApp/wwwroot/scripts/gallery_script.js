@@ -1,4 +1,4 @@
-import Shared from './shared.js';
+import Shared from '/scripts/shared.js';
 
 const sharedFuncs = new Shared();
 
@@ -77,15 +77,15 @@ export default class Gallery {
                 source.forEach(e => {
                     let newElem = `<div class="gallery-card">
                             <div class="card-content">
-                                <img class="gallery-image" src="./images/BlogImages/${e.imagePath}" alt="">
+                                <img class="gallery-image" src="/images/BlogImages/${e.imagePath}" alt="">
                                 <div class="redirections">
-                                    <a class="redirect-image" href="./images/BlogImages/${e.imagePath}" target="_blank">
-                                        <img class="redirect-image" src="./images/redirect_image.png" alt="">
+                                    <a class="redirect-image" href="/images/BlogImages/${e.imagePath}" target="_blank">
+                                        <img class="redirect-image" src="/images/redirect_image.png" alt="">
                                     </a>`;
                     if (e.blogId != null) {
                         newElem += `
-                                    <a class="redirect-image" href="./article/${e.blogId}" target="_blank">
-                                        <img class="redirect-image" src="./images/redirect_blog.png" alt="">
+                                    <a class="redirect-image" href="/article/${e.blogId}" target="_blank">
+                                        <img class="redirect-image" src="/images/redirect_blog.png" alt="">
                                     </a>`;
                     }
                     newElem += `
