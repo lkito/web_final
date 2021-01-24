@@ -1,0 +1,41 @@
+﻿
+<section class="section--general section--order">
+    <div class="container--general">
+        <div class="order_items">
+            <div class="example_display">
+                <p>Closest match:</p>
+                <img src="/images/no_tags_entered.png" id="example_image" />
+            </div>
+            <div class="search_items">
+                <div id="order__titles" class="order__titles">
+
+                    <input type="radio" id="order-title-cakes" name="orderType" value="cake">
+                    <label class="order-title" for="order-title-cakes">Cakes</label>
+
+                    <input type="radio" id="order-title-decor" name="orderType" value="decor"  checked>
+                    <label class="order-title" for="order-title-decor">Decor</label>
+
+                    <input type="radio" id="order-title-cookies" name="orderType" value="cookies">
+                    <label class="order-title" for="order-title-cookies">Cookies</label>
+
+                </div>
+                <div id="order_filter" class="order_filter">
+                    <div class="filter_input">
+                        <input type="text" placeholder="Add colors, ingredients, themes, etc." id="tag_input_text" name="tag_input">
+                        <input type="submit" id="tag_input_button" value="Add tags">
+                    </div>
+                    <div id="filter_tags" class="filter_tags"></div>
+                </div>
+                <div class="order_input">
+                    <input class="order_input_elem" type="text" placeholder="Enter phone number..." id="phone_number" name="phone_number">
+                    <input class="order_input_elem" type="email" placeholder="Enter email..." id="email" name="email">
+                    <textarea id="additional_info" class="order_input_elem" rows="5" cols="35" placeholder="Additional information..."></textarea>
+                    <input type="submit" id="order_input_button" value="Submit order">
+                    <p id="order_submitted_text">Order submitted! Please wait for an answer from the chef.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<link rel="stylesheet" href="/style/order.css">

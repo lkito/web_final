@@ -2,11 +2,13 @@
 import Index from '/scripts/index_script.js';
 import Blogs from '/scripts/blogs_script.js';
 import Article from '/scripts/article_script.js';
+import Order from '/scripts/order_script.js';
 
 const gallery = new Gallery();
 const index = new Index();
 const blogs = new Blogs();
 const article = new Article();
+const order = new Order();
 
 const appElem = document.getElementById('app'); 
 
@@ -67,9 +69,17 @@ const routeMaps = {
     },
     '/about': {
         filePath: '/about.html',
-        callBack: (params) => {
-        },
+        callBack: (params) => { },
         unload: () => { }
+    },
+    '/order': {
+        filePath: '/order.html',
+        callBack: (params) => {
+            order.orderLoad();
+        },
+        unload: () => {
+            order.orderUnload();
+        }
     },
 };
 
