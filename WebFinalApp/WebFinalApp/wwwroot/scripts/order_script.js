@@ -88,13 +88,14 @@ export default class Order {
         document.getElementById('tag_input_text').addEventListener('keydown', this.addTags.bind(this));
 
         document.getElementById('order_input_button').addEventListener('click', () => {
+            const orderType = document.querySelector('input[name="orderType"]:checked').value;
             const data = {
                 phoneNumber: document.getElementById('phone_number').value,
                 email: document.getElementById('email').value,
                 tags: this.filterTags,
-                imgLink: document.getElementById('example_image').src,
+                imgLink: this.exampleImages[orderType].length !== 0 ? document.getElementById('example_image').src : '',
                 description: document.getElementById('additional_info').value,
-                orderType: document.querySelector('input[name="orderType"]:checked').value
+                orderType: orderType
             }
             var request = new XMLHttpRequest();
             request.open('POST', sharedFuncs.apiUrl + '/api/order/SubmitOrder', true);

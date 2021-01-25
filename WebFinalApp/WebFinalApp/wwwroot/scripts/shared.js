@@ -3,8 +3,8 @@ export default class Shared {
 
     };
 
-    //apiUrl = 'https://webfinalmanna.azurewebsites.net';
-    apiUrl = 'http://localhost:52162';
+    apiUrl = 'https://webfinalkt.azurewebsites.net';
+    //apiUrl = 'http://localhost:52162';
 
     apiCall(method, url, callback) {
         var request = new XMLHttpRequest();

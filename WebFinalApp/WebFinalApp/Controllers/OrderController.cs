@@ -30,30 +30,35 @@ namespace WebFinalApp.Controllers
             MailboxAddress from = new MailboxAddress("User", order.Email);
             message.From.Add(from);
 
-            MailboxAddress to = new MailboxAddress("Admin", "lkiti17@freeuni.edu.ge");
+            MailboxAddress to = new MailboxAddress("User", order.Email);
             message.To.Add(to);
 
-            message.Subject = "Order from " + order.PhoneNumber;
+            message.Subject = "Order submitted from " + order.PhoneNumber;
 
             BodyBuilder bodyBuilder = new BodyBuilder();
-            bodyBuilder.TextBody = @"Order details:
+            bodyBuilder.TextBody = @"Details of your order:
     Phone number: " + order.PhoneNumber + @"
     Email: " + order.Email + @"
-    Order type: " + order.OrderType + @"
-    Image link: " + order.ImgLink + @"
+    Order type: " + order.OrderType;
+            if (order.ImgLink != "") {
+                bodyBuilder.TextBody += @"
+    Image link: " + order.ImgLink; 
+            }
+            bodyBuilder.TextBody += @"
     Order tags: ";
             foreach(var tag in order.Tags)
             {
                 bodyBuilder.TextBody += tag;
                 if (order.Tags.Last() == tag)
                 {
-                    bodyBuilder.TextBody += ".\n";
+                    bodyBuilder.TextBody += ".";
                 } else
                 {
                     bodyBuilder.TextBody += ", ";
                 }
             }
-            bodyBuilder.TextBody += @"    Additional information: " + order.Description;
+            bodyBuilder.TextBody += "\n    Additional information: " + order.Description;
+            bodyBuilder.TextBody += "\n\n    Please wait, the chef will contact you soon!";
 
             message.Body = bodyBuilder.ToMessageBody();
             SmtpClient client = new SmtpClient();

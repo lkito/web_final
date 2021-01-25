@@ -38,12 +38,15 @@ namespace WebFinalApp.Controllers
                 dbImages = dbImages.Where(e => e.ImageTags.Any(t => t.TagName.Contains(tag)));
             }
             dbImages = dbImages.OrderByDescending(i => i.DateCreated);
-            
+
+            var cakeImages = dbImages.Where(d => d.ImageType.Type == Constants.ImageType.Cake).Skip(skip).Take(take).ToList().Select(e => new ImageResults.GalleryImage(e)).ToList();
+            var decorImages = dbImages.Where(d => d.ImageType.Type == Constants.ImageType.Decor).Skip(skip).Take(take).ToList().Select(e => new ImageResults.GalleryImage(e)).ToList();
+            var cookieImages = dbImages.Where(d => d.ImageType.Type == Constants.ImageType.Cookies).Skip(skip).Take(take).ToList().Select(e => new ImageResults.GalleryImage(e)).ToList();
             return new ImageResults.GalleryImageLists
             {
-                CakeImages = dbImages.Where(d => d.ImageType.Type == Constants.ImageType.Cake).Skip(skip).Take(take).ToList().Select(e => new ImageResults.GalleryImage(e)).ToList(),
-                DecorImages = dbImages.Where(d => d.ImageType.Type == Constants.ImageType.Decor).Skip(skip).Take(take).ToList().Select(e => new ImageResults.GalleryImage(e)).ToList(),
-                CookieImages = dbImages.Where(d => d.ImageType.Type == Constants.ImageType.Cookies).Skip(skip).Take(take).ToList().Select(e => new ImageResults.GalleryImage(e)).ToList(),
+                CakeImages = cakeImages,
+                DecorImages = decorImages,
+                CookieImages = cookieImages,
             };
         }
     }

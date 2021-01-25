@@ -71,7 +71,7 @@ export default class Gallery {
         const take = 3;
         let queryString = sharedFuncs.apiUrl + `/api/images/GetGalleryImages?skip=${skip}&take=${take}`;
         this.filterTags.forEach(e => queryString += `&filters=${e}`);
-        sharedFuncs.apiCall('GET', queryString, (json) => {
+        sharedFuncs.apiCall('GET', queryString, function(json) {
             const result = JSON.parse(json);
             const galleryFill = (source, elem) => {
                 source.forEach(e => {
@@ -98,7 +98,8 @@ export default class Gallery {
             galleryFill(result.cakeImages, cakesElem);
             galleryFill(result.decorImages, decorElem);
             galleryFill(result.cookieImages, cookiesElem);
-        });
+            this.isLoading = false
+        }.bind(this));
     };
 
     async scrollHandler() {
@@ -106,8 +107,7 @@ export default class Gallery {
         const contentElem = document.getElementById('gallery__items');
         if (window.innerHeight + window.scrollY > (contentElem.offsetTop + contentElem.offsetHeight)) {
             this.isLoading = true;
-            await this.fillGallery();
-            setTimeout(() => { this.isLoading = false; }, 200);
+            this.fillGallery();
         }
     }
 
