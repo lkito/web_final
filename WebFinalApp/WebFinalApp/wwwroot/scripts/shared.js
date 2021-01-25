@@ -3,6 +3,9 @@ export default class Shared {
 
     };
 
+    //apiUrl = 'https://webfinalmanna.azurewebsites.net';
+    apiUrl = 'http://localhost:52162';
+
     apiCall(method, url, callback) {
         var request = new XMLHttpRequest();
         request.open(method, url, true);

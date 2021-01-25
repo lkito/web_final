@@ -18,7 +18,7 @@ export default class Order {
             return;
         }
         const selectedType = document.querySelector('input[name="orderType"]:checked').value;
-        let queryString = `http://localhost:52162/api/images/GetGalleryImages?skip=0&take=1`;
+        let queryString = sharedFuncs.apiUrl + `/api/images/GetGalleryImages?skip=0&take=1`;
         this.filterTags.forEach(e => queryString += `&filters=${e}`);
         sharedFuncs.apiCall('GET', queryString, (json) => {
             const result = JSON.parse(json);
@@ -97,7 +97,7 @@ export default class Order {
                 orderType: document.querySelector('input[name="orderType"]:checked').value
             }
             var request = new XMLHttpRequest();
-            request.open('POST', 'http://localhost:52162/api/order/SubmitOrder', true);
+            request.open('POST', sharedFuncs.apiUrl + '/api/order/SubmitOrder', true);
             request.setRequestHeader('Content-Type', 'application/json');
             console.log(JSON.stringify(data));
             request.send(JSON.stringify(data));

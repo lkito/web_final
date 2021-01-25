@@ -69,7 +69,7 @@ export default class Gallery {
         }
         const skip = Math.max(cakesElem.childElementCount, decorElem.childElementCount, cookiesElem.childElementCount);
         const take = 3;
-        let queryString = `http://localhost:52162/api/images/GetGalleryImages?skip=${skip}&take=${take}`;
+        let queryString = sharedFuncs.apiUrl + `/api/images/GetGalleryImages?skip=${skip}&take=${take}`;
         this.filterTags.forEach(e => queryString += `&filters=${e}`);
         sharedFuncs.apiCall('GET', queryString, (json) => {
             const result = JSON.parse(json);

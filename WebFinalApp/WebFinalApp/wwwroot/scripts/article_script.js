@@ -7,7 +7,7 @@ export default class Article {
     constructor() { };
 
     articleLoad(id) {
-        sharedFuncs.apiCall('GET', `http://localhost:52162/api/blogs/${id}`, (json) => {
+        sharedFuncs.apiCall('GET', sharedFuncs.apiUrl + `/api/blogs/${id}`, (json) => {
             const result = JSON.parse(json);
             document.getElementById('article_title').innerHTML = result.blogTitle;
 

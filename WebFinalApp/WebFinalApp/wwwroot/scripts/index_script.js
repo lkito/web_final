@@ -120,7 +120,7 @@ export default class Index {
 
         const fillFeaturedBlogs = () => {
             const blogsElem = document.getElementById('new-blogs');
-            sharedFuncs.apiCall('GET', 'http://localhost:52162/api/blogs/GetBlogPreviews/?skip=0&take=10', (json) => {
+            sharedFuncs.apiCall('GET', sharedFuncs.apiUrl + '/api/blogs/GetBlogPreviews/?skip=0&take=10', (json) => {
                 const result = JSON.parse(json);
                 result.forEach(e => {
                     blogsElem.innerHTML += `

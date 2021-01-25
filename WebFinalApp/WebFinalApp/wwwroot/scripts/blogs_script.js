@@ -12,7 +12,7 @@ export default class Blogs {
         const blogsElem = document.getElementById('article__items');
         const skip = blogsElem.childElementCount;
         const take = 3;
-        sharedFuncs.apiCall('GET', `http://localhost:52162/api/blogs/GetBlogPreviews/?skip=${skip}&take=${take}`, (json) => {
+        sharedFuncs.apiCall('GET', sharedFuncs.apiUrl + `/api/blogs/GetBlogPreviews/?skip=${skip}&take=${take}`, (json) => {
             const result = JSON.parse(json);
             result.forEach(e => {
                 const curDate = new Date(e.dateCreated);
@@ -37,7 +37,7 @@ export default class Blogs {
     fillFeaturedBlogs() {
         const blogsElem = document.getElementById('main-article__items');
         const take = 3;
-        sharedFuncs.apiCall('GET', `http://localhost:52162/api/blogs/GetBlogPreviews/?skip=3&take=${take}`, (json) => {
+        sharedFuncs.apiCall('GET', sharedFuncs.apiUrl + `/api/blogs/GetBlogPreviews/?skip=3&take=${take}`, (json) => {
             const result = JSON.parse(json);
             const curDate1 = new Date(result[0].dateCreated);
             blogsElem.innerHTML += `
