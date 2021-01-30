@@ -1,0 +1,15 @@
+﻿@media all and (max-width: 960px) {
+
+    .container--general {
+        width: 100%;
+    }
+
+}
+
+@media all and (max-width: 480px) {
+
+    .back-to-top-button {
+        display: none;
+    }
+}
+

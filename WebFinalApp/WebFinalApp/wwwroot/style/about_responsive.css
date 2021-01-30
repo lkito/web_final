@@ -1,0 +1,22 @@
+﻿@media all and (max-width: 960px) {
+
+    .subsection_body {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .subsection_reverse {
+        flex-direction: column-reverse;
+    }
+
+    .content_text {
+        width: 70%;
+    }
+
+    .content_image {
+        width: 80%;
+        padding-bottom: 15px;
+    }
+
+
+}

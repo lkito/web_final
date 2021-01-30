@@ -1,0 +1,15 @@
+﻿@media all and (max-width: 960px) {
+
+    #scroller_img_left {
+        display: none;
+    }
+
+    #scroller_img_right {
+        display: none;
+    }
+
+    #scroller_img_center {
+        width: 80%;
+    }
+}
+

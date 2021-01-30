@@ -33,14 +33,18 @@ const routeMaps = {
         callBack: (params) => {
             index.indexLoad();
         },
-        unload: () => { }
+        unload: () => {
+            index.indexUnload();
+        }
     },
     '/index': {
         filePath: '/index.html',
         callBack: (params) => {
             index.indexLoad();
         },
-        unload: () => { }
+        unload: () => {
+            index.indexUnload();
+        }
     },
     '/gallery': {
         filePath: '/gallery.html',

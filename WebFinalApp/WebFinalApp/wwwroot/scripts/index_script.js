@@ -7,7 +7,7 @@ export default class Index {
     constructor() { };
 
 
-    addScroller(elem, isTouch) {
+    addSlider(elem, isTouch) {
         let pos = { top: 0, left: 0, x: 0, y: 0 };
         let startPos = { x: 0, y: 0 };
 
@@ -64,14 +64,14 @@ export default class Index {
         elem.scrollLeft -= 200;
     };
 
-    indexLoad() {
+    setupScroller() {
         const scrollerImgCenter = document.getElementById('scroller_img_center');
         const scrollerImgLeft = document.getElementById('scroller_img_left');
         const scrollerImgRight = document.getElementById('scroller_img_right');
         const masterClassButton = document.getElementById('find_out_more');
 
 
-        scrollerImgLeft.onclick = function () {
+        const scrollLeftEvent = function () {
             const temp = [scrollerImgCenter.src, scrollerImgCenter.alt];
             scrollerImgCenter.src = scrollerImgLeft.src;
             scrollerImgCenter.alt = scrollerImgLeft.alt;
@@ -84,7 +84,7 @@ export default class Index {
             }
         };
 
-        scrollerImgRight.onclick = function () {
+        const scrollRightEvent = function () {
             const temp = [scrollerImgCenter.src, scrollerImgCenter.alt];
             scrollerImgCenter.src = scrollerImgRight.src;
             scrollerImgCenter.alt = scrollerImgRight.alt;
@@ -97,14 +97,28 @@ export default class Index {
             }
         };
 
+        scrollerImgLeft.onclick = scrollLeftEvent;
+        scrollerImgRight.onclick = scrollRightEvent;
+        this.scrollLeftFlag = true;
+
+        this.scrollerIntervalId = setInterval(function () {
+            if (this.scrollLeftFlag) {
+                scrollLeftEvent();
+            } else scrollRightEvent();
+            this.scrollLeftFlag = !this.scrollLeftFlag;
+        }.bind(this), 5000);
+    }
+
+    indexLoad() {
+        this.setupScroller();
 
         const blog_elem = document.getElementById('new-blogs');
         const tweet_elem = document.getElementById('new-tweets');
-        this.addScroller(blog_elem, false);
-        this.addScroller(blog_elem, true);
+        this.addSlider(blog_elem, false);
+        this.addSlider(blog_elem, true);
 
-        this.addScroller(tweet_elem, false);
-        this.addScroller(tweet_elem, true);
+        this.addSlider(tweet_elem, false);
+        this.addSlider(tweet_elem, true);
 
         document.getElementById('right-arrow-blogs').addEventListener('click', () => {
             this.scrollRight(blog_elem);
@@ -140,6 +154,10 @@ export default class Index {
         };
 
         fillFeaturedBlogs();
+    }
+
+    indexUnload() {
+        clearInterval(this.scrollerIntervalId);
     }
 }
 

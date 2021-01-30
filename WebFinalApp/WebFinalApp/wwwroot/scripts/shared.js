@@ -25,4 +25,12 @@ export default class Shared {
 
         request.send();
     };
+
+    addListenerMulti(el, s, fn) {
+        s.split(' ').forEach(e => el.addEventListener(e, fn));
+    }
+
+    removeListenerMulti(el, s, fn) {
+        s.split(' ').forEach(e => el.removeEventListener(e, fn));
+    }
 }

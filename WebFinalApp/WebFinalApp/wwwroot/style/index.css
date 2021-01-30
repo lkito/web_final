@@ -54,9 +54,10 @@
     opacity: 0.8;
     border-radius: 10px;
     cursor: pointer;
-    bottom: 30px;
+    bottom: 10px;
     position: absolute;
-    margin-left: 250px;
+    margin: auto;
+    font-size: 1.5vw;
 }
 
 /* scroller_end */
@@ -112,7 +113,7 @@
     align-items: center;
     justify-content: space-between;
     overflow: hidden;
-    padding: 20px 0px;
+    margin: 20px 0px;
     cursor: pointer;
 }
 
