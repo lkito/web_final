@@ -7,7 +7,7 @@ export default class Index {
     constructor() { };
 
 
-    addScroller(elem) {
+    addScroller(elem, isTouch) {
         let pos = { top: 0, left: 0, x: 0, y: 0 };
         let startPos = { x: 0, y: 0 };
 
@@ -19,25 +19,25 @@ export default class Index {
                 left: elem.scrollLeft,
                 top: elem.scrollTop,
                 // Get the current mouse position
-                x: e.clientX,
-                y: e.clientY,
+                x: isTouch ? e.touches[0].clientX : e.clientX,
+                y: isTouch ? e.touches[0].clientY : e.clientY,
             };
 
             startPos = {
-                x: e.clientX,
-                y: e.clientY,
+                x: isTouch ? e.touches[0].clientX : e.clientX,
+                y: isTouch ? e.touches[0].clientY : e.clientY,
             };
-            elem.addEventListener('mousemove', mouseMoveHandler);
-            elem.addEventListener('mouseup', mouseUpHandler);
+            sharedFuncs.addListenerMulti(elem, isTouch ? 'touchmove' : 'mousemove', mouseMoveHandler);
+            sharedFuncs.addListenerMulti(elem, isTouch ? 'touchend' : 'mouseup', mouseUpHandler);
         };
 
         const mouseMoveHandler = function (e) {
             // How far the mouse has been moved
-            const dx = e.clientX - pos.x;
-            const dy = e.clientY - pos.y;
+            const dx = (isTouch ? e.touches[0].clientX : e.clientX) - pos.x;
+            //const dy = (isTouch ? e.touches[0].clientY : e.clientY) - pos.y;
 
             // Scroll the element
-            elem.scrollTop = pos.top - dy;
+            //elem.scrollTop = pos.top - dy;
             elem.scrollLeft = pos.left - dx;
         };
 
@@ -45,15 +45,15 @@ export default class Index {
             elem.style.cursor = 'pointer';
             elem.style.removeProperty('user-select');
 
-            elem.removeEventListener('mousemove', mouseMoveHandler);
-            elem.removeEventListener('mouseup', mouseUpHandler);
+            sharedFuncs.removeListenerMulti(elem, isTouch ? 'touchmove' : 'mousemove', mouseMoveHandler);
+            sharedFuncs.removeListenerMulti(elem, isTouch ? 'touchend' : 'mouseup', mouseUpHandler);
             if (startPos.x == e.x && startPos.y == e.y) {
                 e.target.querySelector('.targ_link').dispatchEvent(new MouseEvent('click'));
             }
         };
 
         // Attach the handler
-        elem.addEventListener('mousedown', mouseDownHandler);
+        sharedFuncs.addListenerMulti(elem, isTouch ? 'touchstart' : 'mousedown', mouseDownHandler);
     }
 
     scrollRight (elem) {
@@ -100,8 +100,11 @@ export default class Index {
 
         const blog_elem = document.getElementById('new-blogs');
         const tweet_elem = document.getElementById('new-tweets');
-        this.addScroller(blog_elem);
-        this.addScroller(tweet_elem);
+        this.addScroller(blog_elem, false);
+        this.addScroller(blog_elem, true);
+
+        this.addScroller(tweet_elem, false);
+        this.addScroller(tweet_elem, true);
 
         document.getElementById('right-arrow-blogs').addEventListener('click', () => {
             this.scrollRight(blog_elem);
