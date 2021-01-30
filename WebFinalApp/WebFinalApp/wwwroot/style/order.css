@@ -15,6 +15,7 @@
     flex-direction: column;
     width: 48%;
     padding-bottom: 30px;
+    padding-top: 20px;
 }
 
 
@@ -48,6 +49,7 @@
     border-bottom: 2px solid transparent;
     font-family: "Times New Roman", Times, serif;
     transition: 0.5s;
+    margin: 0px 5px;
 }
 
 .order-title:hover {
@@ -57,7 +59,7 @@
 
 .order__titles input[type="radio"]:checked+.order-title {
     border-color: black;
-    width: 80%;
+    width: 60%;
 }
 
 
@@ -134,10 +136,15 @@ input:focus {
 
 #order_input_button {
     width: 20%;
+    min-width: 90px;
     border-radius: 10px;
     cursor: pointer;
 }
 
 #order_submitted_text {
+    display: none;
+}
+
+#fill_everything_text {
     display: none;
 }

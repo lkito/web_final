@@ -89,18 +89,25 @@ export default class Order {
 
         document.getElementById('order_input_button').addEventListener('click', () => {
             const orderType = document.querySelector('input[name="orderType"]:checked').value;
+            const emailValue = document.getElementById('email').value;
+            const phoneValue = document.getElementById('phone_number').value;
+            const descriptionValue = document.getElementById('additional_info').value;
+            if (!emailValue || !phoneValue || !descriptionValue) {
+                document.getElementById('fill_everything_text').style.display = 'block';
+                return;
+            }
+            document.getElementById('fill_everything_text').style.display = 'none';
             const data = {
-                phoneNumber: document.getElementById('phone_number').value,
-                email: document.getElementById('email').value,
+                phoneNumber: phoneValue,
+                email: emailValue,
                 tags: this.filterTags,
                 imgLink: this.exampleImages[orderType].length !== 0 ? document.getElementById('example_image').src : '',
-                description: document.getElementById('additional_info').value,
+                description: descriptionValue,
                 orderType: orderType
             }
             var request = new XMLHttpRequest();
             request.open('POST', sharedFuncs.apiUrl + '/api/order/SubmitOrder', true);
             request.setRequestHeader('Content-Type', 'application/json');
-            console.log(JSON.stringify(data));
             request.send(JSON.stringify(data));
 
             document.getElementById('order_input_button').style.display = 'none';

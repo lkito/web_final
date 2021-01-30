@@ -1,0 +1,15 @@
+﻿@media all and (max-width: 960px) {
+
+    .order_items {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .example_display {
+        width: 80%;
+    }
+
+    .search_items {
+        width: 80%;
+    }
+}
