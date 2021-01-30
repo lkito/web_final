@@ -31,6 +31,7 @@ input:focus {
     width: 65px;
     border-radius: 10px;
     cursor: pointer;
+    margin-left: 5px;
 }
 
 .filter_tags {
@@ -156,6 +157,7 @@ input:focus {
     width: 50px;
     height: 50px;
     margin: auto;
+    cursor: pointer;
 }
 
 .card-content:hover {

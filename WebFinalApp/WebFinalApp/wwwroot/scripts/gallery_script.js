@@ -85,7 +85,7 @@ export default class Gallery {
                                     </a>`;
                     if (e.blogId != null) {
                         newElem += `
-                                    <a class="redirect-image" href="/article/${e.blogId}" target="_blank">
+                                    <a class="redirect-image" onclick="goTo('/article/${e.blogId}');">
                                         <img class="redirect-image" src="/images/redirect_blog.png" alt="">
                                     </a>`;
                     }

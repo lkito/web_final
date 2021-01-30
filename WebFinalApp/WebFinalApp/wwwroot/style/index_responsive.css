@@ -11,5 +11,26 @@
     #scroller_img_center {
         width: 80%;
     }
+
+    #left-arrow-blogs {
+        display: none;
+    }
+
+    #right-arrow-blogs {
+        display: none;
+    }
+
+    #left-arrow-tweets {
+        display: none;
+    }
+
+    #right-arrow-tweets {
+        display: none;
+    }
+
+    .content-scroll {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }
 

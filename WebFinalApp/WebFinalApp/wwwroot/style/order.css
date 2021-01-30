@@ -93,6 +93,7 @@ input:focus {
     width: 65px;
     border-radius: 10px;
     cursor: pointer;
+    margin-left: 5px;
 }
 
 .filter_tags {

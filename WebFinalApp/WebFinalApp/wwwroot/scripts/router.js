@@ -90,6 +90,14 @@ const routeMaps = {
 let unloadFunc;
 
 const loadContent = (uri) => {
+    const burgerElem = document.getElementById('burger_wrapper');
+    if (burgerElem.classList.contains('clicked')) {
+        burgerElem.classList.remove('clicked');
+        document.getElementById('navbar__items__menu').style.left = '100%';
+        document.getElementById('navbar__items__menu').classList.add('navbar__items__menu_hide');
+        document.body.style.overflow = '';
+    }
+
     const uriSections = uri.split('#', 2);
     uri = uriSections[0];
     let hash = '';
@@ -130,10 +138,10 @@ const loadContent = (uri) => {
     xhttp.open('GET', routeMaps[match.route].filePath, true);
     xhttp.send();
     unloadFunc = routeMaps[match.route].unload;
+
 };
 
 window.goTo = (uri, routeName) => {
-    if (uri.split('#')[0] === window.location.pathname) return;
     if (unloadFunc !== undefined) {
         unloadFunc();
     }
@@ -157,4 +165,21 @@ window.addEventListener("popstate", popStateHandler);
 document.getElementById('back-to-top-button').addEventListener('click', () => {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+});
+
+
+document.getElementById('burger_wrapper').addEventListener('click', (e) => {
+    const burgerElem = document.getElementById('burger_wrapper');
+    const menuElem = document.getElementById('navbar__items__menu');
+    if (burgerElem.classList.contains('clicked')) {
+        burgerElem.classList.remove('clicked');
+        menuElem.style.left = '100%';
+        menuElem.classList.add('navbar__items__menu_hide');
+        document.body.style.overflow = '';
+    } else {
+        burgerElem.classList.add('clicked');
+        menuElem.style.left = '0px';
+        menuElem.classList.remove('navbar__items__menu_hide');
+        document.body.style.overflow = 'hidden';
+    }
 });
