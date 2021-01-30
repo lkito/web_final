@@ -90,7 +90,7 @@ input:focus {
 }
 
 #tag_input_button {
-    width: 20%;
+    width: 65px;
     border-radius: 10px;
     cursor: pointer;
 }

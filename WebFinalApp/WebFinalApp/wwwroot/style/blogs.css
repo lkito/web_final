@@ -10,7 +10,7 @@
     padding-top: 20px;
     padding-bottom: 30px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     height: 450px;
 }
 
@@ -49,7 +49,7 @@
 
 .main-article-info {
     text-shadow: black 0px 0px 10px;
-    width: 80%;
+    width: 75%;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -94,7 +94,8 @@
 
 /* articles_start */
 
-.section--articles{
+.section--articles {
+    min-height: 1000px;
     background-color: #e8e7e5;
     padding-bottom: 30px;
 }
@@ -103,7 +104,7 @@
     padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .article-card {
@@ -132,7 +133,7 @@
     width: 90%;
     height: 80px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-direction: column;
     margin-bottom: 8px;
 }

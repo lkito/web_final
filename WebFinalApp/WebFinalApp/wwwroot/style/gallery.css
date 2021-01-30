@@ -28,7 +28,7 @@ input:focus {
 }
 
 #tag_input_button {
-    width: 15%;
+    width: 65px;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -71,7 +71,7 @@ input:focus {
 
 .gallery__items {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 100%;
 }
 
@@ -84,7 +84,7 @@ input:focus {
 
 .gallery__titles {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 100%;
 }
 

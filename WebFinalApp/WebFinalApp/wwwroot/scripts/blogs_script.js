@@ -11,7 +11,7 @@ export default class Blogs {
     async fillBlogs() {
         const blogsElem = document.getElementById('article__items');
         const skip = blogsElem.childElementCount;
-        const take = 3;
+        const take = 6;
         sharedFuncs.apiCall('GET', sharedFuncs.apiUrl + `/api/blogs/GetBlogPreviews?skip=${skip}&take=${take}`, (json) => {
             const result = JSON.parse(json);
             result.forEach(e => {

@@ -50,7 +50,7 @@ h1 {
 
 .subsection_body {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .content_text {

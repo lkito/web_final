@@ -26,6 +26,7 @@ export default class Gallery {
 
         var clickedList = e.srcElement.classList;
         if (clickedList.contains('gallery-title--clicked')) {
+            if (window.innerWidth <= 960) return;
             clickedList.remove('gallery-title--clicked');
             gallerySections.forEach(s => {
                 s.section.style.display = 'flex';
@@ -37,7 +38,7 @@ export default class Gallery {
                     width: 100%;
                     flex-direction: row;
                     flex-wrap: wrap;
-                    justify-content: space-around;
+                    justify-content: space-evenly;
                 }
 
                 div .gallery-card {
@@ -157,6 +158,16 @@ export default class Gallery {
             e.title.addEventListener('click', this.gallerySectionHandler);
         });
 
+
+        if (window.innerWidth <= 960) gallerySections[1].title.dispatchEvent(new MouseEvent('click'));
+        this.windResizeEvent = () => {
+            if (window.innerWidth <= 960 && !gallerySections.some(e => e.title.classList.contains('gallery-title--clicked'))) {
+                gallerySections[1].title.dispatchEvent(new MouseEvent('click'));
+            }
+        };
+
+        window.addEventListener('resize', this.windResizeEvent);
+
         this.isLoading = true;
         this.fillGallery();
         setTimeout(() => { this.isLoading = false; }, 200);
@@ -171,5 +182,6 @@ export default class Gallery {
     galleryUnload() {
         this.filterTags = [];
         window.removeEventListener('scroll', this.scrollHandlerProt);
+        window.removeEventListener('resize', this.windResizeEvent);
     }
 }
