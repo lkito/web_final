@@ -48,7 +48,8 @@ export default class Index {
             sharedFuncs.removeListenerMulti(elem, isTouch ? 'touchmove' : 'mousemove', mouseMoveHandler);
             sharedFuncs.removeListenerMulti(elem, isTouch ? 'touchend' : 'mouseup', mouseUpHandler);
             if (startPos.x == e.x && startPos.y == e.y) {
-                e.target.querySelector('.targ_link').dispatchEvent(new MouseEvent('click'));
+                const link = e.target.querySelector('.targ_link');
+                if (link != null) link.dispatchEvent(new MouseEvent('click'));
             }
         };
 
@@ -157,9 +158,8 @@ export default class Index {
 
         sharedFuncs.apiCall('GET', sharedFuncs.apiUrl + `/api/GetTweets`, function (json) {
             const result = JSON.parse(json);
-            const tweets = document.getElementById('tweets_id');
+            const tweets = document.getElementById('new-tweets');
             result.forEach(e => {
-                console.log(JSON.parse(e).html);
                 tweets.innerHTML += JSON.parse(e).html;
             });
             let widg = document.createElement('script');
