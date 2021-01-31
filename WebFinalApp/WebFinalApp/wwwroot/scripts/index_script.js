@@ -154,6 +154,18 @@ export default class Index {
         };
 
         fillFeaturedBlogs();
+
+        sharedFuncs.apiCall('GET', sharedFuncs.apiUrl + `/api/GetTweets`, function (json) {
+            const result = JSON.parse(json);
+            const tweets = document.getElementById('tweets_id');
+            result.forEach(e => {
+                console.log(JSON.parse(e).html);
+                tweets.innerHTML += JSON.parse(e).html;
+            });
+            let widg = document.createElement('script');
+            widg.src = 'https://platform.twitter.com/widgets.js';
+            document.body.appendChild(widg);
+        });
     }
 
     indexUnload() {
