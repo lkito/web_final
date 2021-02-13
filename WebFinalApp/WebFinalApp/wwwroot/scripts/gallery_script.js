@@ -99,7 +99,7 @@ export default class Gallery {
             galleryFill(result.cakeImages, cakesElem);
             galleryFill(result.decorImages, decorElem);
             galleryFill(result.cookieImages, cookiesElem);
-            this.isLoading = false
+            setTimeout(() => { this.isLoading = false; }, 1500);
         }.bind(this));
     };
 

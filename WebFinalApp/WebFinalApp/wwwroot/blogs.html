@@ -1,19 +1,42 @@
 ﻿
-    <section class="section--general">
-        <div class="container--general">
-            <div id="main-article__items" class="main-article__items">
-                
+<section class="section--general">
+    <div class="container--general">
+        <div class="header-wrap">
+            <div class="header">
+                <div class="title">
+                    <h2>FEATURED BLOGS</h2>
+                </div>
             </div>
         </div>
-    </section>
+        <div id="main-article__items" class="main-article__items">
 
-
-
-    <section class="section--general section--articles">
-        <div class="container--general container--articles">
-            <div id="article__items" class="article__items"></div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <link rel="stylesheet" href="/style/blogs.css">
-    <link rel="stylesheet" href="/style/blogs_responsive.css">
+
+
+<section class="section--general section--articles">
+    <div class="container--general container--articles">
+        <div class="blog_filters">
+            <div class="top_filters">
+                <input type="text" placeholder="Filter by title..." id="title_input_text" name="title_input">
+            </div>
+            <div class="bottom_filters">
+                <div class="input_field">
+                    <p class="input_label">From:</p>
+                    <input class="blog_filter_date" type="date" id="blog_filter_start_time" name="date_start" min="2018-01-01">
+                </div>
+                <div class="input_field">
+                    <p class="input_label">To:</p>
+                    <input class="blog_filter_date" type="date" id="blog_filter_end_time" name="date_end" min="2018-01-01">
+                </div>
+            </div>
+            <input type="submit" id="filter_button" value="Search">
+        </div>
+        <div id="article__items" class="article__items"></div>
+    </div>
+</section>
+
+<link rel="stylesheet" href="/style/blogs.css">
+<link rel="stylesheet" href="/style/blogs_responsive.css">

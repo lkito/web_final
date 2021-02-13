@@ -12,7 +12,17 @@ export default class Blogs {
         const blogsElem = document.getElementById('article__items');
         const skip = blogsElem.childElementCount;
         const take = 6;
-        sharedFuncs.apiCall('GET', sharedFuncs.apiUrl + `/api/blogs/GetBlogPreviews?skip=${skip}&take=${take}`, (json) => {
+        let queryString = sharedFuncs.apiUrl + `/api/blogs/GetBlogPreviews?skip=${skip}&take=${take}`;
+        if (this.dateFrom) {
+            queryString += `&dateFrom=${this.dateFrom}`;
+        }
+        if (this.dateTo) {
+            queryString += `&dateTo=${this.dateTo}`;
+        }
+        if (this.titleFilter) {
+            queryString += `&title=${this.titleFilter}`;
+        }
+        sharedFuncs.apiCall('GET', queryString, function(json) {
             const result = JSON.parse(json);
             result.forEach(e => {
                 const curDate = new Date(e.dateCreated);
@@ -31,7 +41,8 @@ export default class Blogs {
                     </div>
                  `;
             });
-        });
+            setTimeout(() => { this.isLoading = false; }, 1500);
+        }.bind(this));
     };
 
     fillFeaturedBlogs() {
@@ -83,8 +94,7 @@ export default class Blogs {
         const contentElem = document.getElementById('article__items');
         if (window.innerHeight + window.scrollY > (contentElem.offsetTop + contentElem.offsetHeight)) {
             this.isLoading = true;
-            await this.fillBlogs();
-            setTimeout(() => { this.isLoading = false; }, 200);
+            this.fillBlogs();
         }
     }
 
@@ -95,6 +105,13 @@ export default class Blogs {
         this.scrollHandlerProt = this.scrollHandler.bind(this);
         window.addEventListener('scroll', this.scrollHandlerProt);
         this.fillFeaturedBlogs();
+        document.getElementById('filter_button').addEventListener('click', function () {
+            this.dateFrom = document.getElementById('blog_filter_start_time').value;
+            this.dateTo = document.getElementById('blog_filter_end_time').value;
+            this.titleFilter = document.getElementById('title_input_text').value;
+            document.getElementById('article__items').innerHTML = '';
+            this.fillBlogs();
+        }.bind(this));
     }
 
     blogsUnload() {

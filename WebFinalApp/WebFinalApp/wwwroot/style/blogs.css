@@ -1,10 +1,43 @@
 
-/* main-articles_start */
+/* header_start */
 
-/* .section--main-articles{
-    min-height: 1000px;
-    background-image: linear-gradient(#0c3865,#800ead 800px, #700759 2000px);
-} */
+.header-wrap {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    padding-top: 40px;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: black;
+    width: 100%;
+    align-items: center;
+    height: 3px;
+    position: relative;
+}
+
+.header .title {
+    display: flex;
+    width: 256px;
+    height: 48px;
+    border-radius: 11px;
+    background-color: black;
+    color: white;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+/* header_end */
+
+
+
+/* main-articles_start */
 
 .main-article__items {
     padding-top: 20px;
@@ -40,16 +73,18 @@
     justify-content: center;
 }
 
-.main-article-image{
+.main-article-image {
     height: 100%;
+    width: 100%;
     align-self: center;
     border-radius: 15px;
     border: 1px solid black;
+    object-fit: cover;
 }
 
 .main-article-info {
     text-shadow: black 0px 0px 10px;
-    width: 75%;
+    width: 85%;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -92,6 +127,69 @@
 
 
 
+/* blog_filters_start */
+
+.blog_filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.top_filters {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    padding-bottom: 7px;
+}
+
+#title_input_text {
+    border-radius: 10px;
+    padding-left: 7px;
+    width: 80%;
+    height: 35px;
+    min-width: 320px;
+}
+
+.bottom_filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+.input_field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 5px;
+}
+
+.input_label {
+    padding-right: 5px;
+}
+
+.blog_filter_date {
+    height: 30px;
+    border-radius: 10px;
+}
+
+#filter_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+/* blog_filters_end */
+
+
+
+
 /* articles_start */
 
 .section--articles {
@@ -101,7 +199,6 @@
 }
 
 .article__items{
-    padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;

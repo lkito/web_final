@@ -27,9 +27,26 @@ namespace WebFinalApp.Controllers
 
         // GET blog previews
         [HttpGet("api/blogs/GetBlogPreviews")]
-        public ActionResult<List<BlogResults.BlogPreview>> GetBlogPreviews([FromQuery(Name = "skip")] int skip, [FromQuery(Name = "take")] int take)
+        public ActionResult<List<BlogResults.BlogPreview>> GetBlogPreviews([FromQuery(Name = "skip")] int skip, [FromQuery(Name = "take")] int take, [FromQuery(Name = "title")] string title,
+                                                                           [FromQuery(Name = "dateFrom")] DateTime? dateFrom, [FromQuery(Name = "dateTo")] DateTime? dateTo)
         {
-            return db.Blogs.Include(b => b.Images).OrderByDescending(c => c.DateCreated)
+            var query = db.Blogs.Include(b => b.Images);
+            if (dateFrom.HasValue)
+            {
+                dateFrom = dateFrom.Value.Date;
+                query = query.Where(e => e.DateCreated >= dateFrom);
+            }
+            if (dateTo.HasValue)
+            {
+                dateTo = dateTo.Value.Date.AddDays(1).AddTicks(-1);
+                query = query.Where(e => e.DateCreated <= dateTo);
+            }
+            if (!string.IsNullOrEmpty(title))
+            {
+                var keyWords = title.ToLower().Split(' ');
+                query = query.Where(e => keyWords.All(word => e.BlogTitle.ToLower().Contains(word)));
+            }
+            return query.OrderByDescending(c => c.DateCreated)
                 .Skip(skip).Take(take).ToList().Select(e => new BlogResults.BlogPreview(e)).ToList();
         }
 

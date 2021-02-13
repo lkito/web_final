@@ -16,7 +16,7 @@ namespace WebFinalDB.Models
 
         public int Id { get; set; }
 
-        [Column(TypeName = "text")]
+        [StringLength(400)]
         [Required]
         public string BlogTitle { get; set; }
 
