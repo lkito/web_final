@@ -47,7 +47,7 @@ export default class Index {
 
             sharedFuncs.removeListenerMulti(elem, isTouch ? 'touchmove' : 'mousemove', mouseMoveHandler);
             sharedFuncs.removeListenerMulti(elem, isTouch ? 'touchend' : 'mouseup', mouseUpHandler);
-            if (startPos.x == e.x && startPos.y == e.y) {
+            if (startPos.x == e.x && startPos.y == e.y && e.button == 0) {
                 const link = e.target.querySelector('.targ_link');
                 if (link != null) link.dispatchEvent(new MouseEvent('click'));
             }
@@ -146,7 +146,7 @@ export default class Index {
                             <a class="targ_link" onclick="goTo('/article/${e.id}', 'index')" target="_blank"></a>
                             <img src="/images/BlogImages/${e.image.imagePath}" alt="">
                             <div class="new-blog-title">
-                                ${e.blogTitle}
+                                <p class="blog_title_text">${e.blogTitle}</p>
                             </div>
                         </div>
                     `;
