@@ -143,7 +143,7 @@ export default class Index {
                 result.forEach(e => {
                     blogsElem.innerHTML += `
                         <div class="item--new-blog" target="_blank">
-                            <a class="targ_link" href="/article/${e.id}" target="_blank"></a>
+                            <a class="targ_link" onclick="goTo('/article/${e.id}', 'index')" target="_blank"></a>
                             <img src="/images/BlogImages/${e.image.imagePath}" alt="">
                             <div class="new-blog-title">
                                 ${e.blogTitle}
@@ -156,7 +156,7 @@ export default class Index {
 
         fillFeaturedBlogs();
 
-        sharedFuncs.apiCall('GET', sharedFuncs.apiUrl + `/api/GetTweets`, function (json) {
+        sharedFuncs.apiCall('GET', sharedFuncs.apiUrl + `/api/GetTweets?numTweets=7`, function (json) {
             const result = JSON.parse(json);
             const tweets = document.getElementById('new-tweets');
             result.forEach(e => {

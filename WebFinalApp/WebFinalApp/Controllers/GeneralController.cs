@@ -47,12 +47,12 @@ namespace WebFinalApp.Controllers
 
         // GET api/tweets
         [HttpGet("api/GetTweets")]
-        public async Task<List<string>> GetTweets()
+        public async Task<List<string>> GetTweets([FromQuery(Name = "numTweets")] int numTweets)
         {
             List<string> result = new List<string>();
             try
             {
-                List<string> statusIds = await GetLastStatuses(Constants.Twitter.FetchedTweets);
+                List<string> statusIds = await GetLastStatuses(numTweets);
                 foreach (var id in statusIds)
                 {
                     HttpResponseMessage response = await client.GetAsync("https://publish.twitter.com/oembed?url=https://twitter.com/" + Constants.Twitter.ScreenName + "/status/" + id);
