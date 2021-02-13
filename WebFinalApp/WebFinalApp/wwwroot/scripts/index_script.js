@@ -107,7 +107,7 @@ export default class Index {
                 scrollLeftEvent();
             } else scrollRightEvent();
             this.scrollLeftFlag = !this.scrollLeftFlag;
-        }.bind(this), 5000);
+        }.bind(this), 10000);
     }
 
     indexLoad() {
