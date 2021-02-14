@@ -48,7 +48,7 @@ export default class Blogs {
     fillFeaturedBlogs() {
         const blogsElem = document.getElementById('main-article__items');
         const take = 3;
-        sharedFuncs.apiCall('GET', sharedFuncs.apiUrl + `/api/blogs/GetBlogPreviews?skip=3&take=${take}`, function(json) {
+        sharedFuncs.apiCall('GET', sharedFuncs.apiUrl + `/api/blogs/GetBlogPreviews?skip=5&take=${take}`, function(json) {
             const result = JSON.parse(json);
             const curDate1 = new Date(result[0].dateCreated);
             blogsElem.innerHTML += `
