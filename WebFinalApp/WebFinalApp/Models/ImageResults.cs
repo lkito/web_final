@@ -24,6 +24,7 @@ namespace WebFinalApp.Models
         {
             public GalleryImage(WebFinalDB.Models.Image img)
             {
+                ImageId = img.Id;
                 ImagePath = img.ImagePath;
                 DateCreated = img.DateCreated;
                 BlogId = img.BlogId;
@@ -34,6 +35,7 @@ namespace WebFinalApp.Models
                     BlogTitle = img.Blog.BlogTitle;
                 }
             }
+            public int ImageId { get; set; }
             public string BlogTitle { get; set; }
             public string ImagePath { get; set; }
             public DateTime DateCreated { get; set; }

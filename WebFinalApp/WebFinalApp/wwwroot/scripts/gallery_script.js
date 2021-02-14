@@ -90,6 +90,9 @@ export default class Gallery {
                                     </a>`;
                     }
                     newElem += `
+                                    <a class="redirect-image" onclick="goTo('/order/${e.imageId}', 'order')">
+                                        <img class="redirect-image" src="/images/redirect_order.png" alt="">
+                                    </a>
                                 </div>
                             </div>
                         </div>`;
