@@ -173,7 +173,7 @@ export default class Gallery {
 
         this.isLoading = true;
         this.fillGallery();
-        setTimeout(() => { this.isLoading = false; }, 200);
+        setTimeout(() => { this.isLoading = false; }, 1000);
         this.scrollHandlerProt = this.scrollHandler.bind(this);
         window.addEventListener('scroll', this.scrollHandlerProt);
 

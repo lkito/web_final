@@ -101,7 +101,7 @@ export default class Blogs {
     blogsLoad() {
         this.isLoading = true;
         this.fillBlogs();
-        setTimeout(() => { this.isLoading = false; }, 200);
+        setTimeout(() => { this.isLoading = false; }, 1000);
         this.scrollHandlerProt = this.scrollHandler.bind(this);
         window.addEventListener('scroll', this.scrollHandlerProt);
         this.fillFeaturedBlogs();
