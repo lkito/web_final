@@ -27,6 +27,14 @@ namespace WebFinalApp.Controllers
             return db.Images.Where(i => i.BlogId == blogId).ToList().Select(e => new ImageResults.Image(e)).ToList();
         }
 
+        // GET api/images/GetBlogImages/5
+        [HttpGet("api/images/{imageId}")]
+        public ActionResult<ImageResults.GalleryImage> GetImage(int imageId)
+        {
+            var dbImage = db.Images.FirstOrDefault(i => i.Id == imageId);
+            return dbImage == null ? null : new ImageResults.GalleryImage(dbImage);
+        }
+
         // GET api/images/GetBlogImages/5/5
         [HttpGet("api/images/GetGalleryImages")]
         public ActionResult<ImageResults.GalleryImageLists> GetGalleryImages([FromQuery(Name = "filters")] List<string> filters, [FromQuery(Name = "skip")] int skip = 0, [FromQuery(Name = "take")] int take = 10)

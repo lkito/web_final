@@ -85,6 +85,15 @@ const routeMaps = {
             order.orderUnload();
         }
     },
+    '/order/:image_id': {
+        filePath: '/order.html',
+        callBack: (params) => {
+            order.orderLoad(params.image_id);
+        },
+        unload: () => {
+            order.orderUnload();
+        }
+    },
 };
 
 let unloadFunc;
