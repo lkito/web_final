@@ -41,7 +41,7 @@ export default class Blogs {
                     </div>
                  `;
             });
-            setTimeout(() => { this.isLoading = false; }, 1500);
+            setTimeout(() => { this.isLoading = false; }, 800);
         }.bind(this));
     };
 
@@ -101,7 +101,7 @@ export default class Blogs {
     blogsLoad() {
         this.isLoading = true;
         this.fillBlogs();
-        setTimeout(() => { this.isLoading = false; }, 1000);
+        setTimeout(() => { this.isLoading = false; }, 800);
         this.scrollHandlerProt = this.scrollHandler.bind(this);
         window.addEventListener('scroll', this.scrollHandlerProt);
         this.fillFeaturedBlogs();

@@ -102,7 +102,7 @@ export default class Gallery {
             galleryFill(result.cakeImages, cakesElem);
             galleryFill(result.decorImages, decorElem);
             galleryFill(result.cookieImages, cookiesElem);
-            setTimeout(() => { this.isLoading = false; }, 1500);
+            setTimeout(() => { this.isLoading = false; }, 800);
         }.bind(this));
     };
 
@@ -173,7 +173,7 @@ export default class Gallery {
 
         this.isLoading = true;
         this.fillGallery();
-        setTimeout(() => { this.isLoading = false; }, 1000);
+        setTimeout(() => { this.isLoading = false; }, 800);
         this.scrollHandlerProt = this.scrollHandler.bind(this);
         window.addEventListener('scroll', this.scrollHandlerProt);
 
