@@ -3,7 +3,7 @@
 A simple website for a famous cook. The main challenge for this project was to write a Single Page Application using vanilla javascript, without using any convenient frameworks.
 The code for the router can be seen <a href="https://github.com/lkito/web_final/blob/master/WebFinalApp/WebFinalApp/wwwroot/scripts/router.js" target="_blank">here.</a>
 
-**Technologies used:** Javascript, C#, .Net framework, ADO.NET entities Code First model for easy connection with the SQL database. The website and the database was, for some time, hosted using Microsoft Azure cloud hosting services.
+**Technologies used:** Javascript, C#, ASP.Net framework, ADO.NET entities Code First model for easy connection with the SQL database. The website and the database was, for some time, hosted using Microsoft Azure cloud hosting services.
 
 ### **features:**
 - Explore newest blogs and tweets from the owner of the website on the home page
